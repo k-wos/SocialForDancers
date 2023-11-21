@@ -28,4 +28,9 @@ const userSchema = new Schema({
     prefferedDanceStyle: { type: String,},
     friends: [{ type: Schema.Types.ObjectId, ref: "Users" }],
 
-});
+},
+    { timestamps: true }
+);
+
+const Users = mongoose.model("Users", userSchema);
+export default Users;
