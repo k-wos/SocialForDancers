@@ -1,4 +1,5 @@
 import User from "../models/userModel";
+import { hashPassword } from "../utils";
 
 export const register = async (req, res, next) => {
     const { firstName, lastName, email, password } = req.body;
@@ -16,6 +17,13 @@ export const register = async (req, res, next) => {
         }
 
         const hashedPassword = await hashPassword(password);
+
+        const newUser = await User.create({
+            firstName,
+            lastName,
+            email,
+            password: hashedPassword,
+        });
     } catch (error) {
         next(error);
         return;
