@@ -1,5 +1,5 @@
 import User from "../models/userModel";
-import { hashString } from "../utils";
+import { createJWT, hashString } from "../utils";
 import { sendVerificationEmail } from "../utils/sendEmail";
 
 export const register = async (req, res, next) => {
@@ -30,5 +30,51 @@ export const register = async (req, res, next) => {
     } catch (error) {
         next(error);
         return;
+    }
+};
+
+export const login = async (req, res, next) => {
+    const { email, password } = req.body;
+
+    try {
+        if (!(email || password)) {
+            next("Provide all the required fields");
+            return;
+        }
+
+        const user = await User.findOne({ email })
+            .select("+password")
+            .populate({
+                path: "friends",
+                select: "firstName lastName location profileUrl -password",
+            });
+
+        if (!user) {
+            next("Invalid email or password");
+            return;
+        }
+        if (!user?.verified) {
+            next("Please verify your email");
+            return;
+        }
+        const isMatch = await compareString(password, user?.password);
+
+        if (!isMatch) {
+            next("Invalid email or password");
+            return;
+        }
+
+        user.password = undefined;
+        const token = createJWT(user?._id);
+
+        res.status(201).json({
+            success: true,
+            message: "Login successful",
+            token,
+            user,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ message: error.message });
     }
 };
