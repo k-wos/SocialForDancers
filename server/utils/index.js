@@ -2,14 +2,16 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "./../models/userModel.js";
 
-User.pre("save", async function (next) {
+User.schema.pre("save", async function (next) {
     if (this.isModified("password")) {
         this.password = await bcrypt.hash(this.password, 10);
     }
     next();
 });
 
-User.methods.generateAuthToken = function () {
+User.methods = {};
+
+User.methods.generateAuthToken = async function () {
     const token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
     return token;
 };
