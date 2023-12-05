@@ -12,3 +12,9 @@ export const compareString = async (useValue, hashedValue) => {
     const isMatch = await bcrypt.compare(useValue, hashedValue);
     return isMatch;
 };
+
+export function createJWT(id) {
+    return JWT.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES_IN,
+    });
+}
