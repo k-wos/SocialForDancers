@@ -8,3 +8,18 @@ export const register = async (req, res) => {
 
     res.json(user);
 };
+
+export const getUser = async (req, res) => {
+    try {
+        const userId = req.user.id;
+
+        const user = await User.findById(userId);
+
+        const userName = user.name;
+
+        res.json({ name: userName });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Server error");
+    }
+};
