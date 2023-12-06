@@ -26,12 +26,26 @@ const postSchema = mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: new Date(),
+        default: Date.now,
     },
     updatedAt: {
         type: Date,
-        default: new Date(),
+        default: Date.now,
     },
+});
+
+postSchema.pre("save", async function () {
+    try {
+        const user = await mongoose
+            .model("users")
+            .findByIdAndUpdate(
+                this.creator,
+                { $push: { posts: this._id } },
+                { new: true }
+            );
+    } catch (error) {
+        console.error(error);
+    }
 });
 
 export default mongoose.model("posts", postSchema);

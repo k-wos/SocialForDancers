@@ -27,6 +27,7 @@ userSchema.pre("save", async function (next) {
             return next(error);
         }
     }
+    next();
 });
 
 export default mongoose.model("users", userSchema);
