@@ -14,6 +14,19 @@ const userSchema = mongoose.Schema({
     favouriteDance: String,
     height: Number,
     city: String,
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "posts" }],
+});
+
+userSchema.pre("save", async function (next) {
+    const user = this;
+    if (user.isModified("password" || user.isNew)) {
+        try {
+            const hash = await bcrypt.hash(user.password, 10);
+            user.password = hash;
+        } catch (error) {
+            return next(error);
+        }
+    }
 });
 
 export default mongoose.model("users", userSchema);
