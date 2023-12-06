@@ -6,6 +6,8 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import dbConnection from "./dbConfig/index.js";
 import userRoutes from "./routes/userRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -23,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(morgan("dev"));
 app.use("/api", userRoutes);
+app.use("/api", authRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
