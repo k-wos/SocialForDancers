@@ -3,8 +3,6 @@ import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 
-const router = express.Router();
-
 export const authenticate = async (req, res) => {
     const { email, password } = req.body;
     if (!email) {
@@ -29,5 +27,3 @@ export const authenticate = async (req, res) => {
 
     res.json({ token });
 };
-
-export default router;
