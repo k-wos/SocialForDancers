@@ -15,7 +15,7 @@ export const getUser = async (req, res) => {
 
         const user = await User.findById(userId);
 
-        const userName = user.name;
+        const userName = user.firstName;
 
         res.json({ name: userName });
     } catch (error) {

@@ -2,6 +2,8 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const authenticate = async (req, res) => {
     const { email, password } = req.body;
@@ -12,7 +14,7 @@ export const authenticate = async (req, res) => {
         return res.status(400).json({ message: "Password is required" });
     }
 
-    const user = await User.findneOne({ email });
+    const user = await User.findOne({ email });
 
     if (!user) {
         return res.status(401).json({ message: "Invalid credentials" });
@@ -23,7 +25,7 @@ export const authenticate = async (req, res) => {
         return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY);
 
     res.json({ token });
 };
