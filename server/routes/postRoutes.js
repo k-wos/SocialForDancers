@@ -1,5 +1,5 @@
 import express from "express";
-import auth from "../middleware/auth.js";
+import { auth } from "../middleware/auth.js";
 import { createPost } from "../controllers/postController.js";
 import { check } from "express-validator";
 

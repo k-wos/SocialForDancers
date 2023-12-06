@@ -7,6 +7,7 @@ import morgan from "morgan";
 import dbConnection from "./dbConfig/index.js";
 import userRoutes from "./routes/userRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use("/api", userRoutes);
 app.use("/api", authRoutes);
+app.use("/api", postRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
