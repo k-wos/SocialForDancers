@@ -26,7 +26,7 @@ export const createPost = async (req, res) => {
 
 export const deletePost = async (req, res) => {
     try {
-        const post = await Post.findOOne({
+        const post = await Post.findOne({
             _id: req.params.id,
             creator: req.user.id,
         });
