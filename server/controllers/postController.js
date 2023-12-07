@@ -23,3 +23,20 @@ export const createPost = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
     }
 };
+
+export const deletePost = async (req, res) => {
+    try {
+        const post = await Post.findOOne({
+            _id: req.params.id,
+            creator: req.user.id,
+        });
+        if (!post) return res.status(404).json({ message: "Post not found" });
+
+        await post.deleteOne({ _id: req.params.id });
+
+        res.status(204).json({ message: "Post deleted successfully" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Something went wrong" });
+    }
+};
