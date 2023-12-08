@@ -19,11 +19,15 @@ const AboutApp = () => {
 
     return (
         <div className="md:left-[10%] max-w-[1100px] m-auto">
-            <h2 className="text-4xl">O aplikacji</h2>
+            <h2 className="text-4xl py-6 bg-gradient-to-r from-purpleText to-orangeText nline-block text-transparent bg-clip-text">
+                O aplikacji
+            </h2>
             <div className="flex">
                 {sections.map((section, index) => (
                     <div key={index} className="flex flex-col">
-                        <h3 className="text-lg">{section.title}</h3>
+                        <h3 className="text-lg py-2 bg-gradient-to-r from-purpleText to-orangeText nline-block text-transparent bg-clip-text">
+                            {section.title}
+                        </h3>
                         <p>{section.content}</p>
                     </div>
                 ))}

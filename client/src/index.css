@@ -6,4 +6,5 @@
     button {
         @apply bg-primary py-2 px-7 rounded-full max-w-fit;
     }
+    
 }

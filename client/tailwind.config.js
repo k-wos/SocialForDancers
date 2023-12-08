@@ -6,8 +6,9 @@ export default {
             colors: {
                 primary: "#815FD3",
                 secondary: "#353535",
-                light: "#f4f4f4",
-                dark: "#222",
+                purpleText: "#7D2AD2",
+                midText: "#BC5A9A",
+                orangeText: "#FB8B61",
                 danger: "#e3342f",
             },
             fontFamily: {
