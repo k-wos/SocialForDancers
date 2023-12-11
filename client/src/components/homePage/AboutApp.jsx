@@ -18,7 +18,7 @@ const AboutApp = () => {
     ];
 
     return (
-        <div className="md:left-[10%] max-w-[1100px] m-auto">
+        <div className="md:left-[10%] max-w-[1100px] m-auto p-4">
             <h2 className="text-4xl py-6 bg-gradient-to-r from-purpleText to-orangeText nline-block text-transparent bg-clip-text">
                 O aplikacji
             </h2>

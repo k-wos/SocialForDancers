@@ -10,6 +10,7 @@ export default {
                 midText: "#BC5A9A",
                 orangeText: "#FB8B61",
                 danger: "#e3342f",
+                secondBg: "#FAF2E9",
             },
             fontFamily: {
                 poppins: ["Poppins", "sans-serif"],
