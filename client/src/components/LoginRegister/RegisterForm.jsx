@@ -3,9 +3,24 @@ import { useState } from "react";
 const RegisterForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [passwordConfirm, setPasswordConfirm] = useState("");
 
-    const handleRegister = () => {};
+    const handleRegister = async () => {
+        try {
+            const response = await fetch("/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+            if (response.ok) {
+                console.log("Zarejestrowano!");
+            } else {
+                const data = await response.json();
+                console.error("Rejestracja nie powiodła się!", data);
+            }
+        } catch (error) {
+            console.error("Rejestracja nie powiodła się!", error);
+        }
+    };
     return (
         <form>
             <label>Email:</label>
@@ -20,13 +35,6 @@ const RegisterForm = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <label>Potwierdź hasło:</label>
-            <input
-                type="password"
-                value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
             />
 
             <button type="submit" onClick={handleRegister}>
