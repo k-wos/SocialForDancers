@@ -9,6 +9,15 @@ export const register = async (req, res) => {
     res.json(user);
 };
 
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Server error");
+    }
+};
+
 export const getUser = async (req, res) => {
     try {
         const userId = req.user.id;
