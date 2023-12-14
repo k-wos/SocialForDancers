@@ -36,6 +36,10 @@ const UserSchema = new mongoose.Schema({
     favouriteDance: {
         type: String,
     },
+    date: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 const User = mongoose.model("user", UserSchema);
