@@ -21,21 +21,6 @@ const UserSchema = new mongoose.Schema({
     avatar: {
         type: String,
     },
-    birthday: {
-        type: Date,
-    },
-    latinClass: {
-        type: String,
-    },
-    standardClass: {
-        type: String,
-    },
-    prefferdDanceStyle: {
-        type: String,
-    },
-    favouriteDance: {
-        type: String,
-    },
     date: {
         type: Date,
         default: Date.now,
