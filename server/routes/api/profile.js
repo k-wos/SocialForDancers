@@ -106,4 +106,16 @@ router.get("/user/:user_id", async (req, res) => {
     }
 });
 
+router.delete("/", auth, async (req, res) => {
+    try {
+        await Profile.findOneAndDelete({ user: req.user.id });
+        await User.findOneAndDelete({ _id: req.user.id });
+
+        res.json({ msg: "User Removed" });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Server Error");
+    }
+});
+
 export default router;
