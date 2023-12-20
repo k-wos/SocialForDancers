@@ -9,9 +9,10 @@ const Navbar = () => {
     };
 
     const navItems = [
-        { id: 1, name: "Tancerze", href: "#", current: true },
-        { id: 2, name: "Zarejestruj", href: "#", current: false },
-        { id: 3, name: "Zaloguj", href: "#", current: false },
+        { id: 1, name: "Główna", href: "#", current: true },
+        { id: 2, name: "Tancerze", href: "#", current: true },
+        { id: 3, name: "Zarejestruj", href: "#", current: false },
+        { id: 4, name: "Zaloguj", href: "#", current: false },
     ];
     return (
         <div className="flex justify-between items-center h-16 max-w-[1240px] mx-auto px-4">
