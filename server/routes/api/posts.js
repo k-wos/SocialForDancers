@@ -133,4 +133,36 @@ router.put("/unlike/:id", auth, async (req, res) => {
     }
 });
 
+router.post(
+    "/comment/:id",
+    [auth, [check("content", "Content is Required").not().isEmpty()]],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ error: errors.array() });
+        }
+
+        try {
+            const user = await User.findById(req.user.id).select("-password");
+            const post = await Post.findById(req.params.id);
+
+            const newComment = {
+                content: req.body.content,
+                name: user.name,
+                avatar: user.avatar,
+                user: req.user.id,
+            };
+
+            post.comments.unshift(newComment);
+
+            await post.save();
+
+            res.json(post.comments);
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).send("Server Error");
+        }
+    }
+);
+
 export default router;
