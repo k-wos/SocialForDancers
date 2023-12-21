@@ -17,15 +17,15 @@ const AboutApp = () => {
         },
     ];
     return (
-        <div className="max-w-[1240px] m-auto">
-            <h1 className="font-bolt text-5xl p-4 font-merriweather bg-gradient-to-r from-purpleText to-orangeText inline-block text-transparent bg-clip-text">
+        <div className="max-w-[1240px] m-auto py-10">
+            <h1 className="font-bolt text-5xl px-8 py-4 font-merriweather bg-gradient-to-r from-purpleText to-orangeText inline-block text-transparent bg-clip-text">
                 O aplikacji
             </h1>
             <div className="grid md:grid-cols-3 gap-4 p-4">
                 {info.map((item, index) => (
                     <div
                         key={index}
-                        className="flex flex-col items-center justify-center p-4"
+                        className="flex flex-col items-center  p-4"
                     >
                         <h1 className="font-bold text-2xl text-center">
                             {item.title}

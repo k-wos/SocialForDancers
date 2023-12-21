@@ -10,7 +10,7 @@ const Navbar = () => {
 
     const navItems = [
         { id: 1, name: "Główna", href: "#", current: true },
-        { id: 2, name: "Tancerze", href: "#", current: true },
+        { id: 2, name: "Tancerze", href: "#", current: false },
         { id: 3, name: "Zarejestruj", href: "#", current: false },
         { id: 4, name: "Zaloguj", href: "#", current: false },
     ];
