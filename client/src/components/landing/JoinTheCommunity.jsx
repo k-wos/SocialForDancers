@@ -19,7 +19,7 @@ const JoinTheCommunity = () => {
     return (
         <div className="bg-secondBg p-20">
             <div className="bg-white p-2 py-10 max-w-[1240px] m-auto rounded-xl">
-                <h1 className="font-bold font-merriweather text-2xl p-4 text-center">
+                <h1 className="font-bold font-merriweather text-2xl p-4 text-center bg-gradient-to-r from-purpleText to-orangeText inline-block text-transparent bg-clip-text">
                     Dołącz do społeczności
                 </h1>
                 <div className="grid md:grid-cols-3 gap-4 p-4">
