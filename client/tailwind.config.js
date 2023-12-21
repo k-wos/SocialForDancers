@@ -13,7 +13,8 @@ export default {
                 secondBg: "#FAF2E9",
             },
             fontFamily: {
-                poppins: ["Poppins", "sans-serif"],
+                merriweather: ["Merriweather", "serif"],
+                dmSans: ["DM Sans", "sans-serif"],
             },
         },
         screens: {

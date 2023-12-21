@@ -15,10 +15,12 @@ const Hero = () => {
         >
             <div className="grid md:grid-cols-2 max-w-[1240px] m-auto">
                 <div className="md:left-[10%] max-w-[1100px] m-auto p-4">
-                    <h1 className="font-bold text-3xl md:text-5xl text-white py-2">
+                    <h1 className="font-bold font-merriweather text-3xl md:text-5xl text-white py-2">
                         {HeroData.title}
                     </h1>
-                    <p className="text-white py-2">{HeroData.description}</p>
+                    <p className="text-white py-2 font-dmSans">
+                        {HeroData.description}
+                    </p>
                     <button
                         className="py-3 px-6 sm:w-[60%] my-4 text-white border bg-indigo-600 border-indigo-600
     hover:bg-transparent hover:text-indigo-600 rounded-md"

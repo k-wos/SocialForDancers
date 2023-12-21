@@ -19,7 +19,7 @@ const JoinTheCommunity = () => {
     return (
         <div className="bg-secondBg p-20">
             <div className="bg-white p-2 py-10 max-w-[1240px] m-auto rounded-xl">
-                <h1 className="font-bold text-2xl p-4 text-center">
+                <h1 className="font-bold font-merriweather text-2xl p-4 text-center">
                     Dołącz do społeczności
                 </h1>
                 <div className="grid md:grid-cols-3 gap-4 p-4">
@@ -31,7 +31,7 @@ const JoinTheCommunity = () => {
                             <h1 className="font-bold text-2xl text-center">
                                 {item.title}
                             </h1>
-                            <p className="text-center py-4">
+                            <p className="text-center py-4 font-dmSans">
                                 {item.description}
                             </p>
                         </div>

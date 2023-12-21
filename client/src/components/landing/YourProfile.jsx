@@ -23,7 +23,9 @@ const YourProfile = () => {
     ];
     return (
         <div className="max-w-[1240px] m-auto">
-            <h1 className="font-bolt text-2xl p-4">Twój Profil</h1>
+            <h1 className="font-bolt text-2xl p-4 font-merriweather">
+                Twój Profil
+            </h1>
             <div className="grid md:grid-cols-3 gap-4 p-4">
                 {info.map((item, index) => (
                     <div
@@ -34,7 +36,9 @@ const YourProfile = () => {
                         <h1 className="font-bold text-2xl text-center">
                             {item.title}
                         </h1>
-                        <p className="text-center py-4">{item.description}</p>
+                        <p className="text-center py-4 font-dmSans">
+                            {item.description}
+                        </p>
                     </div>
                 ))}
             </div>
