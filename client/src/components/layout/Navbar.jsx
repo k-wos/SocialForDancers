@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
@@ -9,10 +10,10 @@ const Navbar = () => {
     };
 
     const navItems = [
-        { id: 1, name: "Główna", href: "#", current: true },
-        { id: 2, name: "Tancerze", href: "#", current: false },
-        { id: 3, name: "Zarejestruj", href: "#", current: false },
-        { id: 4, name: "Zaloguj", href: "#", current: false },
+        { id: 1, name: "Główna", link: "/", current: true },
+        { id: 2, name: "Tancerze", link: "#", current: false },
+        { id: 3, name: "Zarejestruj", link: "/register", current: false },
+        { id: 4, name: "Zaloguj", link: "/login", current: false },
     ];
     return (
         <div className="flex justify-between items-center h-16 max-w-[1240px] mx-auto px-4">
@@ -21,14 +22,14 @@ const Navbar = () => {
             <ul className="hidden md:flex">
                 {navItems.map((item) => (
                     <li key={item.id}>
-                        <a
-                            href={item.href}
+                        <Link
+                            to={item.link}
                             className={`${
                                 item.current ? "text-blue-500" : "text-gray-500"
                             } hover:text-blue-500 px-4 py-2`}
                         >
                             {item.name}
-                        </a>
+                        </Link>
                     </li>
                 ))}
             </ul>
