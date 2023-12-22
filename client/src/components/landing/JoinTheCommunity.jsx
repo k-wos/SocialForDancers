@@ -35,11 +35,11 @@ const JoinTheCommunity = () => {
                                 <div className="w-10 h-10 rounded-md bg-[#815FD3] flex  items-center justify-center">
                                     {item.id}
                                 </div>
-                                <h1 className="font-bold text-2xl text-center">
+                                <h1 className="font-bold text-xl pl-2">
                                     {item.title}
                                 </h1>
                             </div>
-                            <p className="text-center py-4 font-dmSans">
+                            <p className="pl-9 py-4 font-dmSans">
                                 {item.description}
                             </p>
                         </div>

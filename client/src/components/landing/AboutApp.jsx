@@ -25,7 +25,7 @@ const AboutApp = () => {
                 {info.map((item, index) => (
                     <div
                         key={index}
-                        className="flex flex-col items-center  p-4"
+                        className="flex flex-col items-center p-4 bg-white shadow-md rounded-xl"
                     >
                         <h1 className="font-bold text-2xl text-center">
                             {item.title}
