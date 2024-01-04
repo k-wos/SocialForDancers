@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../actions/auth";
 import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -124,12 +125,12 @@ const Register = () => {
                 <p className="mt-8 text-xs font-light text-center text-gray-700">
                     {" "}
                     Posiadasz już konto?{" "}
-                    <a
-                        href="#"
+                    <Link
+                        to="/login"
                         className="font-medium text-indigo-600 hover:underline"
                     >
                         Zaloguj się
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>
