@@ -1,19 +1,43 @@
 import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { loggedout } from "../../actions/auth";
 
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const dispatch = useDispatch();
 
     const handleNavbar = () => {
         setNavbarOpen(!navbarOpen);
+    };
+    const handleLogout = () => {
+        dispatch(loggedout());
     };
 
     const navItems = [
         { id: 1, name: "Główna", link: "/", current: true },
         { id: 2, name: "Tancerze", link: "#", current: false },
-        { id: 3, name: "Zarejestruj", link: "/register", current: false },
-        { id: 4, name: "Zaloguj", link: "/login", current: false },
+        ...(!isAuthenticated
+            ? [
+                  {
+                      id: 3,
+                      name: "Zarejestruj",
+                      link: "/register",
+                      current: false,
+                  },
+                  { id: 4, name: "Zaloguj", link: "/login", current: false },
+              ]
+            : [
+                  {
+                      id: 5,
+                      name: "Wyloguj",
+                      link: "#",
+                      current: false,
+                      onClick: handleLogout,
+                  },
+              ]),
     ];
     return (
         <div className="flex justify-between items-center h-16 max-w-[1240px] mx-auto px-4">
@@ -24,6 +48,7 @@ const Navbar = () => {
                     <li key={item.id}>
                         <Link
                             to={item.link}
+                            onClick={item.onClick}
                             className={`${
                                 item.current ? "text-blue-500" : "text-gray-500"
                             } hover:text-blue-500 px-4 py-2`}
@@ -50,14 +75,15 @@ const Navbar = () => {
             >
                 {navItems.map((item) => (
                     <li key={item.id}>
-                        <a
-                            href={item.href}
+                        <Link
+                            to={item.href}
+                            onClick={item.onClick}
                             className={`${
                                 item.current ? "text-blue-500" : "text-gray-500"
                             } hover:text-blue-500 px-4 py-2`}
                         >
                             {item.name}
-                        </a>
+                        </Link>
                     </li>
                 ))}
             </ul>
