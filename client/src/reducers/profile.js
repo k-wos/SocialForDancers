@@ -11,11 +11,18 @@ const profileSlice = createSlice({
     name: "profile",
     initialState,
     reducers: {
-        // Add your action cases here
+        getProfile: (state, action) => {
+            state.profile = action.payload;
+            state.loading = false;
+        },
+        profileError: (state, action) => {
+            state.error = action.payload;
+            state.loading = false;
+        },
     },
 });
 
 // Reducer function
-const profileReducer = profileSlice.reducer;
+export const { getProfile, profileError } = profileSlice.reducer;
 
-export default profileReducer;
+export default profileSlice.actions;
