@@ -6,6 +6,7 @@ import {
     authError,
     loginSuccess,
     loginFail,
+    logout,
 } from "../reducers/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -73,3 +74,8 @@ export const login =
             );
         }
     };
+
+export const loggedout = () => (dispatch) => {
+    dispatch(logout());
+    toast.success("Wylogowano");
+};
