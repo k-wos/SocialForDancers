@@ -22,7 +22,6 @@ const profileSlice = createSlice({
     },
 });
 
-// Reducer function
-export const { getProfile, profileError } = profileSlice.reducer;
+export const { getProfile, profileError } = profileSlice.actions;
 
-export default profileSlice.actions;
+export default profileSlice.reducer;
