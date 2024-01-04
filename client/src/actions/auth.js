@@ -1,9 +1,26 @@
 import axios from "axios";
-import { registerSuccess, registerFail } from "../reducers/auth";
+import {
+    registerSuccess,
+    registerFail,
+    userLoaded,
+    authError,
+} from "../reducers/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { setAuthToken } from "../utils/setAuthToken";
 
-export const loadUser = () => async (dispatch, getState) => {};
+export const loadUser = () => async (dispatch) => {
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+    }
+
+    try {
+        const res = await axios.get("/api/auth");
+        dispatch(userLoaded(res.data));
+    } catch (error) {
+        dispatch(authError());
+    }
+};
 
 export const register =
     ({ firstName, lastName, email, password }) =>
