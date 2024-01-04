@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { register } from "../../actions/auth";
 
 const Register = () => {
+    const dispatch = useDispatch();
     const [formdata, setFormdata] = useState({
         firstName: "",
         lastName: "",
@@ -36,7 +39,7 @@ const Register = () => {
             // } catch (err) {
             //     console.error(err.response.data);
             // }
-            console.log("success");
+            dispatch(register({ firstName, lastName, email, password }));
         }
     };
     return (

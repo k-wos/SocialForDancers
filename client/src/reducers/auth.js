@@ -1,4 +1,4 @@
-import { REGISTER_FAIL, REGISTER_SUCCESS } from "../actions/types";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     tokjen: localStorage.getItem("token"),
@@ -7,27 +7,23 @@ const initialState = {
     user: null,
 };
 
-export default function (state = initialState, action) {
-    const { type, payload } = action;
+const authSlice = createSlice({
+    name: "auth",
+    initialState,
+    reducers: {
+        registerSuccess: (state, action) => {
+            const { token } = action.payload;
+            localStorage.setItem("token", token);
+            state.isAuthenticated = true;
+            state.loading = false;
+        },
+        registerFail: (state) => {
+            localStorage.removeItem("token");
+            state.isAuthenticated = false;
+            state.loading = false;
+        },
+    },
+});
 
-    switch (type) {
-        case REGISTER_SUCCESS:
-            localStorage.setItem("token", payload.token);
-            return {
-                ...state,
-                ...payload,
-                isAuthenticated: true,
-                loading: false,
-            };
-        case REGISTER_FAIL:
-            localStorage.removeItem();
-            return {
-                ...state,
-                ...payload,
-                isAuthenticated: true,
-                loading: false,
-            };
-        default:
-            return state;
-    }
-}
+export const { registerSuccess, registerFail } = authSlice.actions;
+export default authSlice.reducer;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { REGISTER_SUCCESS, REGISTER_FAIL } from "./types";
+import { registerSuccess, registerFail } from "../reducers/auth";
 
 export const register =
     ({ firstName, lastName, email, password }) =>
@@ -14,14 +14,9 @@ export const register =
 
         try {
             const res = await axios.post("/api/users", body, config);
-
-            dispatch({
-                type: REGISTER_SUCCESS,
-                payload: res.data,
-            });
+            dispatch(registerSuccess({ token: res.data.token }));
         } catch (err) {
-            dispatch({
-                type: REGISTER_FAIL,
-            });
+            console.error(err.response ? err.response.data : err.message);
+            dispatch(registerFail());
         }
     };
