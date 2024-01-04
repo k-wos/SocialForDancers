@@ -3,6 +3,8 @@ import { registerSuccess, registerFail } from "../reducers/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+export const loadUser = () => async (dispatch, getState) => {};
+
 export const register =
     ({ firstName, lastName, email, password }) =>
     async (dispatch) => {
