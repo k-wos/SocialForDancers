@@ -1,4 +1,14 @@
+import { useState } from "react";
+
 const Register = () => {
+    const [formdata, setFormdata] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        password2: "",
+    });
+    const { firstName, lastName, email, password, password2 } = formdata;
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl   lg:max-w-xl">
