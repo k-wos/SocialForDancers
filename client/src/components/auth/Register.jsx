@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../actions/auth";
 import { ToastContainer } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const [formdata, setFormdata] = useState({
         firstName: "",
         lastName: "",
@@ -44,6 +46,11 @@ const Register = () => {
             dispatch(register({ firstName, lastName, email, password }));
         }
     };
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/");
+        }
+    }, [isAuthenticated, navigate]);
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <ToastContainer />

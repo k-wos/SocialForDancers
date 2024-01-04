@@ -1,7 +1,13 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/auth";
+import { ToastContainer } from "react-toastify";
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const [formdata, setFormdata] = useState({
         email: "",
         password: "",
@@ -13,10 +19,16 @@ const Login = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log("success");
+        dispatch(login({ email, password }));
     };
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/");
+        }
+    }, [isAuthenticated, navigate]);
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+            <ToastContainer />
             <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl   lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center text-indigo-700 uppercase">
                     Zaloguj się

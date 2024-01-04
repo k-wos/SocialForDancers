@@ -38,6 +38,7 @@ export const register =
         try {
             const res = await axios.post("/api/users", body, config);
             dispatch(registerSuccess({ token: res.data.token }));
+            dispatch(userLoaded());
             toast.success("Rejestracja przebiegła pomyślnie");
         } catch (err) {
             console.error(err.response ? err.response.data : err.message);
@@ -48,24 +49,27 @@ export const register =
         }
     };
 
-export const login = (email, password) => async (dispatch) => {
-    const config = {
-        headers: {
-            "Content-Type": "application/json",
-        },
+export const login =
+    ({ email, password }) =>
+    async (dispatch) => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+
+        const body = JSON.stringify({ email, password });
+
+        try {
+            const res = await axios.post("/api/auth", body, config);
+            dispatch(loginSuccess({ token: res.data.token }));
+            dispatch(userLoaded());
+            toast.success("Logowanie przebiegło pomyślnie");
+        } catch (err) {
+            console.error(err.response ? err.response.data : err.message);
+            dispatch(loginFail());
+            toast.error(
+                err.response ? err.response.data.errors[0].msg : err.message
+            );
+        }
     };
-
-    const body = JSON.stringify({ email, password });
-
-    try {
-        const res = await axios.post("/api/auth", body, config);
-        dispatch(loginSuccess({ token: res.data.token }));
-        toast.success("Logowanie przebiegło pomyślnie");
-    } catch (err) {
-        console.error(err.response ? err.response.data : err.message);
-        dispatch(loginFail());
-        toast.error(
-            err.response ? err.response.data.errors[0].msg : err.message
-        );
-    }
-};
