@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../actions/auth";
+import { ToastContainer } from "react-toastify";
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -44,6 +45,7 @@ const Register = () => {
     };
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+            <ToastContainer />
             <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl   lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center text-indigo-700 underline uppercase">
                     Zarejestruj się
