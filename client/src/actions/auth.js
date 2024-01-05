@@ -64,6 +64,7 @@ export const login =
         try {
             const res = await axios.post("/api/auth", body, config);
             dispatch(loginSuccess({ token: res.data.token }));
+            setAuthToken(res.data.token);
             dispatch(userLoaded());
             toast.success("Logowanie przebiegło pomyślnie");
         } catch (err) {

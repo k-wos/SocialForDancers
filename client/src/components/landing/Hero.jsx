@@ -1,6 +1,13 @@
 import baner from "../../assets/baner.jpg";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const navigate = useNavigate();
+    if (isAuthenticated) {
+        navigate("/dashboard");
+    }
     const HeroData = {
         title: "Social for Dancers: Twój Social Media dla Tancerzy",
         description:
