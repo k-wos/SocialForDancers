@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoutes";
 import { Provider } from "react-redux";
 import store from "./store";
