@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createProfile } from "../../actions/profile";
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const CreateProfile = () => {
     const dispatch = useDispatch();
