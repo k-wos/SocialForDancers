@@ -11,6 +11,7 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { setAuthToken } from "../utils/setAuthToken";
+import { clearProfile } from "../reducers/profile";
 
 export const loadUser = () => async (dispatch) => {
     if (localStorage.token) {
@@ -78,5 +79,6 @@ export const login =
 
 export const loggedout = () => (dispatch) => {
     dispatch(logout());
+    dispatch(clearProfile());
     toast.success("Wylogowano");
 };
