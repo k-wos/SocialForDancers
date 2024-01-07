@@ -1,10 +1,15 @@
 import { useState } from "react";
+import { createProfile } from "../../actions/profile";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const CreateProfile = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         birthday: "",
         latinClass: "",
-        stadnardClass: "",
+        standardClass: "",
         prefferedDanceStyle: "",
         favouriteDance: "",
         youtube: "",
@@ -34,14 +39,12 @@ const CreateProfile = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add your form submission logic here
+        dispatch(createProfile(formData, navigate));
     };
 
     return (
         <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <label htmlFor="birthday" className="block mb-2">
-                Data urodzenia
-            </label>
+            <label className="block mb-2">Data urodzenia</label>
             <input
                 type="date"
                 name="birthday"
@@ -50,9 +53,7 @@ const CreateProfile = () => {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="latinClass" className="block mb-2">
-                Klasa LA
-            </label>
+            <label className="block mb-2">Klasa LA</label>
             <input
                 type="text"
                 name="latinClass"
@@ -61,9 +62,7 @@ const CreateProfile = () => {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="standardClass" className="block mb-2">
-                Klasa ST
-            </label>
+            <label className="block mb-2">Klasa ST</label>
             <input
                 type="text"
                 name="standardClass"
@@ -72,9 +71,7 @@ const CreateProfile = () => {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="prefferedDanceStyle" className="block mb-2">
-                Preferowany styl taneczny
-            </label>
+            <label className="block mb-2">Preferowany styl taneczny</label>
             <input
                 type="text"
                 name="prefferedDanceStyle"
@@ -83,9 +80,7 @@ const CreateProfile = () => {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="favouriteDance" className="block mb-2">
-                Ulubiony taniec
-            </label>
+            <label className="block mb-2">Ulubiony taniec</label>
             <input
                 type="text"
                 name="favouriteDance"
@@ -94,9 +89,7 @@ const CreateProfile = () => {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="youtube" className="block mb-2">
-                YouTube
-            </label>
+            <label className="block mb-2">YouTube</label>
             <input
                 type="text"
                 name="youtube"
@@ -105,9 +98,7 @@ const CreateProfile = () => {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="facebook" className="block mb-2">
-                Facebook
-            </label>
+            <label className="block mb-2">Facebook</label>
             <input
                 type="text"
                 name="facebook"
@@ -116,9 +107,7 @@ const CreateProfile = () => {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="instagram" className="block mb-2">
-                Instagram
-            </label>
+            <label className="block mb-2">Instagram</label>
             <input
                 type="text"
                 name="instagram"
@@ -127,9 +116,7 @@ const CreateProfile = () => {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="twitter" className="block mb-2">
-                Twitter
-            </label>
+            <label className="block mb-2">Twitter</label>
             <input
                 type="text"
                 name="twitter"

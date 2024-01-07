@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getProfile, profileError } from "../reducers/profile";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const getCurrentProfile = () => async (dispatch) => {
     try {
@@ -12,7 +13,7 @@ export const getCurrentProfile = () => async (dispatch) => {
 };
 
 export const createProfile =
-    (formData, history, edit = false) =>
+    (formData, navigate, edit = false) =>
     async (dispatch) => {
         try {
             const config = {
@@ -22,16 +23,20 @@ export const createProfile =
             };
 
             const res = await axios.post("/api/profile", formData, config);
+            console.log(res.data);
             dispatch(getProfile(res.data));
             toast.success(edit ? "Profil zaktualizowany" : "Profil utworzony");
 
             if (!edit) {
-                history.push("/dashboard");
+                navigate("/dashboard");
             }
         } catch (err) {
-            dispatch(profileError(err.response.data));
-            toast.error(
-                err.response ? err.response.data.errors[0].msg : err.message
-            );
+            if (err.response) {
+                dispatch(profileError(err.response.data));
+                toast.error(err.response.data.errors[0].msg);
+            } else {
+                // Handle error without a response
+                toast.error(err.message);
+            }
         }
     };
