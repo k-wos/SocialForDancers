@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import { Link } from "react-router-dom";
+import DashboardActions from "./DashboardActions";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -17,9 +20,10 @@ const Dashboard = () => {
 
     return (
         <>
+            <ToastContainer />
             <p>Witaj {user.firstName}</p>
             {profile !== null ? (
-                <p>Profile</p>
+                <DashboardActions />
             ) : (
                 <>
                     <p>Nie masz utworzonego profilu, dodaj informację:</p>

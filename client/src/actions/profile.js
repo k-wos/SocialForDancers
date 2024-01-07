@@ -27,9 +27,7 @@ export const createProfile =
             dispatch(getProfile(res.data));
             toast.success(edit ? "Profil zaktualizowany" : "Profil utworzony");
 
-            if (!edit) {
-                navigate("/dashboard");
-            }
+            navigate("/dashboard");
         } catch (err) {
             if (err.response) {
                 dispatch(profileError(err.response.data));
