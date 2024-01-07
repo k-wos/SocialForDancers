@@ -38,80 +38,112 @@ const CreateProfile = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="birthday">Birthday</label>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+            <label htmlFor="birthday" className="block mb-2">
+                Data urodzenia
+            </label>
             <input
-                type="text"
+                type="date"
                 name="birthday"
                 value={birthday}
                 onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="latinClass">Latin Class</label>
+            <label htmlFor="latinClass" className="block mb-2">
+                Klasa LA
+            </label>
             <input
                 type="text"
                 name="latinClass"
                 value={latinClass}
                 onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="standardClass">Standard Class</label>
+            <label htmlFor="standardClass" className="block mb-2">
+                Klasa ST
+            </label>
             <input
                 type="text"
                 name="standardClass"
                 value={standardClass}
                 onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="prefferedDanceStyle">Preferred Dance Style</label>
+            <label htmlFor="prefferedDanceStyle" className="block mb-2">
+                Preferowany styl taneczny
+            </label>
             <input
                 type="text"
                 name="prefferedDanceStyle"
                 value={prefferedDanceStyle}
                 onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="favouriteDance">Favourite Dance</label>
+            <label htmlFor="favouriteDance" className="block mb-2">
+                Ulubiony taniec
+            </label>
             <input
                 type="text"
                 name="favouriteDance"
                 value={favouriteDance}
                 onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="youtube">YouTube</label>
+            <label htmlFor="youtube" className="block mb-2">
+                YouTube
+            </label>
             <input
                 type="text"
                 name="youtube"
                 value={youtube}
                 onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="facebook">Facebook</label>
+            <label htmlFor="facebook" className="block mb-2">
+                Facebook
+            </label>
             <input
                 type="text"
                 name="facebook"
                 value={facebook}
                 onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="instagram">Instagram</label>
+            <label htmlFor="instagram" className="block mb-2">
+                Instagram
+            </label>
             <input
                 type="text"
                 name="instagram"
                 value={instagram}
                 onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <label htmlFor="twitter">Twitter</label>
+            <label htmlFor="twitter" className="block mb-2">
+                Twitter
+            </label>
             <input
                 type="text"
                 name="twitter"
                 value={twitter}
                 onChange={handleChange}
+                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
             />
 
-            <button type="submit">Submit</button>
+            <button
+                type="submit"
+                className="bg-blue-500 text-white py-2 px-4 rounded-md"
+            >
+                Zapisz
+            </button>
         </form>
     );
 };
