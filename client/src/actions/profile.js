@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getProfile, profileError } from "../reducers/profile";
+import { getProfile, profileError, getProfiles } from "../reducers/profile";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -7,6 +7,15 @@ export const getCurrentProfile = () => async (dispatch) => {
     try {
         const res = await axios.get("/api/profile/me");
         dispatch(getProfile(res.data));
+    } catch (err) {
+        dispatch(profileError(err.response.data));
+    }
+};
+
+export const getAllProfiles = () => async (dispatch) => {
+    try {
+        const res = await axios.get("/api/profile");
+        dispatch(getProfiles(res.data));
     } catch (err) {
         dispatch(profileError(err.response.data));
     }
