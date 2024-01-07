@@ -27,6 +27,6 @@ const profileSlice = createSlice({
     },
 });
 
-export const { getProfile, profileError } = profileSlice.actions;
+export const { getProfile, profileError, clearProfile } = profileSlice.actions;
 
 export default profileSlice.reducer;

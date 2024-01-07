@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -21,8 +22,8 @@ const Dashboard = () => {
                 <p>Profile</p>
             ) : (
                 <>
-                    <p>Uzupełnij swój profil</p>
-                    <p>Utwórz profil</p>
+                    <p>Nie masz utworzonego profilu, dodaj informację:</p>
+                    <Link to="/create-profile">Utwórz profil</Link>
                 </>
             )}
         </>
