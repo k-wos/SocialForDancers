@@ -22,7 +22,7 @@ const ProfileItem = ({
                     Ulubiony taniec: {favouriteDance}
                 </p>
                 <Link
-                    to={`/profile/${_id}`}
+                    to={`/dancers/${_id}`}
                     className="text-blue-500 hover:underline"
                 >
                     Zobacz profil

@@ -2,13 +2,15 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { getProfileById } from "../../actions/profile";
+import { useParams } from "react-router-dom";
 
-const Profile = ({ match }) => {
+const Profile = () => {
     const dispatch = useDispatch();
+    const { id } = useParams();
 
     useEffect(() => {
-        dispatch(getProfileById(match.params.id));
-    }, [dispatch, match.params.id]);
+        dispatch(getProfileById(id));
+    }, [dispatch, id]);
 
     return <div>Profile</div>;
 };
