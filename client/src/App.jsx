@@ -12,6 +12,7 @@ import { loadUser } from "./actions/auth";
 import { setAuthToken } from "./utils/setAuthToken";
 import CreateProfile from "./components/profile-forms/CreateProfile";
 import EditProfile from "./components/profile-forms/EditProfile";
+import Profiles from "./components/profiles/Profiles";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -28,6 +29,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/dancers" element={<Profiles />} />
                     <Route
                         path="/dashboard"
                         element={
