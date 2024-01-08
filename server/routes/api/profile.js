@@ -31,6 +31,7 @@ router.post("/", auth, async (req, res) => {
         standardClass,
         prefferdDanceStyle,
         favouriteDance,
+        avatar,
         youtube,
         twitter,
         facebook,
@@ -45,6 +46,7 @@ router.post("/", auth, async (req, res) => {
     if (prefferdDanceStyle)
         profileFields.prefferdDanceStyle = prefferdDanceStyle;
     if (favouriteDance) profileFields.favouriteDance = favouriteDance;
+    if (avatar) profileFields.avatar = avatar;
 
     profileFields.social = {};
     if (youtube) profileFields.social.youtube = youtube;

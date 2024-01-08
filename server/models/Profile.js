@@ -20,6 +20,9 @@ const ProfileSchema = new mongoose.Schema({
     favouriteDance: {
         type: String,
     },
+    avatar: {
+        type: String,
+    },
     social: {
         youtube: {
             type: String,
