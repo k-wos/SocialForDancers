@@ -10,16 +10,23 @@ const ProfileItem = ({
     },
 }) => {
     return (
-        <div>
+        <div className="bg-white rounded-lg shadow-md p-6">
             <div className="py-5">
-                <h2>
+                <h2 className="text-2xl font-bold">
                     {firstName} {lastName}
                 </h2>
-                <p>
+                <p className="text-gray-600">
                     LA: {latinClass}, ST: {standardClass}
                 </p>
-                <p>Ulubiony taniec: {favouriteDance}</p>
-                <Link to={`/profile/${_id}`}>Zobacz profil</Link>
+                <p className="text-gray-600">
+                    Ulubiony taniec: {favouriteDance}
+                </p>
+                <Link
+                    to={`/profile/${_id}`}
+                    className="text-blue-500 hover:underline"
+                >
+                    Zobacz profil
+                </Link>
             </div>
         </div>
     );
