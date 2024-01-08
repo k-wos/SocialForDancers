@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const navItems = [
         { id: 1, name: "Główna", link: "/", current: true },
-        { id: 2, name: "Tancerze", link: "#", current: false },
+        { id: 2, name: "Tancerze", link: "/dancers", current: false },
         ...(!isAuthenticated
             ? [
                   {

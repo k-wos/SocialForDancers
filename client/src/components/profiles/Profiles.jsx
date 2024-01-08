@@ -4,13 +4,13 @@ import { getAllProfiles } from "../../actions/profile";
 
 const Profiles = () => {
     const dispatch = useDispatch();
-    const profiles = useSelector((state) => state.profiles);
+    const profiles = useSelector((state) => state.profile.profiles);
     const profile = useSelector((state) => state.profile);
-    console.log(profiles);
 
     useEffect(() => {
         dispatch(getAllProfiles());
     }, [dispatch]);
+    console.log(profiles);
 
     return <div>Profiles</div>;
 };
