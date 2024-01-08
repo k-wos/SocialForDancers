@@ -21,6 +21,15 @@ export const getAllProfiles = () => async (dispatch) => {
     }
 };
 
+export const getProfileById = (userId) => async (dispatch) => {
+    try {
+        const res = await axios.get(`/api/profile/user/${userId}`);
+        dispatch(getProfile(res.data));
+    } catch (err) {
+        dispatch(profileError(err.response.data));
+    }
+};
+
 export const createProfile =
     (formData, navigate, edit = false) =>
     async (dispatch) => {
