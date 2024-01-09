@@ -15,6 +15,10 @@ const Presentation = ({ user, profile }) => {
                     <h1 className="text-center py-3 font-bold text-2xl">
                         {user.firstName} {user.lastName}
                     </h1>
+                    <div className="flex gap-2">
+                        <span>Obserwujący: {user.followers.length}</span>
+                        <span>Obserwowani: {user.following.length}</span>
+                    </div>
                 </div>
             </div>
             {profile !== null ? (
