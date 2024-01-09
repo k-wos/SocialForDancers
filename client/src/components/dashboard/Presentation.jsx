@@ -12,7 +12,7 @@ const Presentation = ({ user, profile }) => {
                         alt="avatar"
                         className="rounded-full aspect-square object-cover"
                     />
-                    <h1 className="text-center py-3 font-bold">
+                    <h1 className="text-center py-3 font-bold text-2xl">
                         {user.firstName} {user.lastName}
                     </h1>
                 </div>

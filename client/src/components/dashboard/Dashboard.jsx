@@ -6,6 +6,7 @@ import DashboardActions from "./DashboardActions";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Presentation from "./Presentation";
+import YourInfo from "./YourInfo";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
