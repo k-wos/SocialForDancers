@@ -6,6 +6,7 @@ import {
     updateLikes,
     removeLikes,
     addPosts,
+    addComments,
 } from "../reducers/post";
 
 export const getAllPosts = () => async (dispatch) => {
@@ -46,6 +47,25 @@ export const removeLike = (postId) => async (dispatch) => {
     try {
         const res = await axios.put(`/api/posts/unlike/${postId}`);
         dispatch(removeLikes({ id: postId, likes: res.data }));
+    } catch (err) {
+        dispatch(postError(err.response.data));
+    }
+};
+export const addComment = (postId, formData) => async (dispatch) => {
+    const config = {
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+
+    try {
+        const res = await axios.post(
+            `/api/posts/comment/${postId}`,
+            formData,
+            config
+        );
+
+        dispatch(addComments({ id: postId, comment: res.data }));
     } catch (err) {
         dispatch(postError(err.response.data));
     }

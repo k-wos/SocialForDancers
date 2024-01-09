@@ -37,7 +37,7 @@ const postSlice = createSlice({
                     : post
             );
         },
-        addComment: (state, action) => {
+        addComments: (state, action) => {
             const { postId, comment } = action.payload;
             const postIndex = state.posts.findIndex(
                 (post) => post._id === postId
@@ -55,6 +55,6 @@ export const {
     updateLikes,
     removeLikes,
     addPosts,
-    addComment,
+    addComments,
 } = postSlice.actions;
 export default postSlice.reducer;
