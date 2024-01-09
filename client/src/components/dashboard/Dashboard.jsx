@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import DashboardActions from "./DashboardActions";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Presentation from "./Presentation";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -21,15 +22,8 @@ const Dashboard = () => {
     return (
         <>
             <ToastContainer />
-            <p>Witaj {user.firstName}</p>
-            {profile !== null ? (
-                <DashboardActions />
-            ) : (
-                <>
-                    <p>Nie masz utworzonego profilu, dodaj informację:</p>
-                    <Link to="/create-profile">Utwórz profil</Link>
-                </>
-            )}
+            <Presentation user={user} profile={profile} />
+            <YourInfo profile={profile} />
         </>
     );
 };
