@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../actions/auth";
 import { ToastContainer } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -53,6 +54,12 @@ const Register = () => {
     }, [isAuthenticated, navigate]);
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+            <Link
+                to="/"
+                className="absolute top-0 left-0 m-4 flex gap-4 items-center"
+            >
+                <FaArrowLeft /> Wroć na stronę główną
+            </Link>
             <ToastContainer />
             <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl   lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center text-indigo-700  uppercase">
