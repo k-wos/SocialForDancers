@@ -12,9 +12,9 @@ import { loadUser } from "./actions/auth";
 import { setAuthToken } from "./utils/setAuthToken";
 import CreateProfile from "./components/profile-forms/CreateProfile";
 import EditProfile from "./components/profile-forms/EditProfile";
-import Profiles from "./components/profiles/Profiles";
+import Dancers from "./pages/Dancers";
 import Profile from "./components/profile/Profile";
-import Posts from "./components/posts/Posts";
+import Posts from "./pages/Posts";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -31,7 +31,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/dancers" element={<Profiles />} />
+                    <Route path="/dancers" element={<Dancers />} />
                     <Route path="/dancers/:id" element={<Profile />} />
                     <Route
                         path="/dashboard"

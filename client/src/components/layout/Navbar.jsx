@@ -17,10 +17,10 @@ const Navbar = () => {
     };
 
     const navItems = [
-        { id: 1, name: "Główna", link: "/", current: true },
         { id: 2, name: "Tancerze", link: "/dancers", current: false },
         ...(!isAuthenticated
             ? [
+                  { id: 1, name: "Główna", link: "/", current: true },
                   {
                       id: 3,
                       name: "Zarejestruj",
