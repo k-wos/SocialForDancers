@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../actions/post";
 import PostItem from "./PostItem";
+import PostForm from "./PostForm";
 
 const Posts = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Posts = () => {
     return (
         <>
             <h1>Posty</h1>
+            <PostForm />
             <div>
                 {Array.isArray(posts) &&
                     posts.map((post) => (
