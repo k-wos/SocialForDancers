@@ -13,7 +13,10 @@ const PostItem = ({
                     <h2 className="text-2xl font-bold">{name}</h2>
                     <p className="text-gray-600">{content}</p>
                     <p>Data utworzzenia {date}</p>
-                    <span>{likes.legth}</span>
+                    <span>{likes.length}</span>
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2">
+                        Like
+                    </button>
                     {user === auth.user._id && (
                         <button className="text-blue-500 hover:underline">
                             Usuń post
