@@ -32,12 +32,18 @@ const Navbar = () => {
             : [
                   {
                       id: 5,
+                      name: "Posty",
+                      link: "/posts",
+                      current: false,
+                  },
+                  {
+                      id: 6,
                       name: "Tablica",
                       link: "/dashboard",
                       current: false,
                   },
                   {
-                      id: 6,
+                      id: 7,
                       name: "Wyloguj",
                       link: "#",
                       current: false,
