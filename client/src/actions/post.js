@@ -16,6 +16,21 @@ export const getAllPosts = () => async (dispatch) => {
         dispatch(postError(err.response.data));
     }
 };
+export const addPost = (formData, navigate) => async (dispatch) => {
+    try {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        console.log(formData);
+        const res = await axios.post("/api/posts", formData, config);
+        dispatch(addPosts(res.data));
+        navigate("/posts");
+    } catch (err) {
+        dispatch(postError(err.response.data));
+    }
+};
 
 export const addLike = (postId) => async (dispatch) => {
     try {
