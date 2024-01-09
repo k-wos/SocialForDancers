@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema({
             },
         },
     ],
-    followings: [
+    following: [
         {
             user: {
                 type: mongoose.Schema.Types.ObjectId,
