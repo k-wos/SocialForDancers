@@ -19,8 +19,23 @@ const postSlice = createSlice({
             state.error = action.payload;
             state.loading = false;
         },
+        updateLikes: (state, action) => {
+            state.posts = state.posts.map((post) =>
+                post._id === action.payload.id
+                    ? { ...post, likes: action.payload.likes }
+                    : post
+            );
+        },
+        removeLikes: (state, action) => {
+            state.posts = state.posts.map((post) =>
+                post._id === action.payload.id
+                    ? { ...post, likes: action.payload.likes }
+                    : post
+            );
+        },
     },
 });
 
-export const { getPosts, postError } = postSlice.actions;
+export const { getPosts, postError, updateLikes, removeLikes } =
+    postSlice.actions;
 export default postSlice.reducer;
