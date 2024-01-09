@@ -21,7 +21,7 @@ router.post(
 
             const newPost = new Post({
                 content: req.body.content,
-                name: user.name,
+                name: user.firstName + " " + user.lastName,
                 avatar: user.avatar,
                 user: req.user.id,
             });
