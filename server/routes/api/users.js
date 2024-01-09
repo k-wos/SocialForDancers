@@ -77,4 +77,59 @@ router.post(
     }
 );
 
+router.put("/:userId/follow", async (req, res) => {
+    if (req.body.userId !== req.params.userId) {
+        try {
+            const user = await User.findById(req.params.userId);
+            const currentUser = await User.findById(req.body.userId);
+
+            if (
+                !user.followers.some(
+                    (follower) => follower.user.toString() === req.body.userId
+                )
+            ) {
+                await user.updateOne({
+                    $push: { followers: { user: req.body.userId } },
+                });
+                await currentUser.updateOne({
+                    $push: { following: { user: req.params.userId } },
+                });
+                res.status(200).json("User has been followed");
+            } else {
+                res.status(400).json("You are already following this user");
+            }
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).send("Server error");
+        }
+    }
+});
+router.put("/:userId/unfollow", async (req, res) => {
+    if (req.body.userId !== req.params.userId) {
+        try {
+            const user = await User.findById(req.params.userId);
+            const currentUser = await User.findById(req.body.userId);
+
+            if (
+                user.followers.some(
+                    (follower) => follower.user.toString() === req.body.userId
+                )
+            ) {
+                await user.updateOne({
+                    $pull: { followers: { user: req.body.userId } },
+                });
+                await currentUser.updateOne({
+                    $pull: { following: { user: req.params.userId } },
+                });
+                res.status(200).json("User has been unfollowed");
+            } else {
+                res.status(400).json("You are not following this user");
+            }
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).send("Server error");
+        }
+    }
+});
+
 export default router;
