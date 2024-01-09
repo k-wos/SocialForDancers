@@ -1,11 +1,14 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { addLike, removeLike } from "../../actions/post";
+import { useDispatch } from "react-redux";
 
 const PostItem = ({
     auth,
     post: { _id, content, name, user, likes, comments, date },
 }) => {
+    const dispatch = useDispatch();
+
     return (
         <>
             <div className="bg-white rounded-lg shadow-md p-6">
@@ -14,7 +17,10 @@ const PostItem = ({
                     <p className="text-gray-600">{content}</p>
                     <p>Data utworzzenia {date}</p>
                     <span>{likes.length}</span>
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2">
+                    <button
+                        onClick={(e) => dispatch(addLike(_id))}
+                        className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2"
+                    >
                         Like
                     </button>
                     {user === auth.user._id && (
