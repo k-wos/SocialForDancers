@@ -23,6 +23,9 @@ const ProfileSchema = new mongoose.Schema({
     avatar: {
         type: String,
     },
+    coverPhoto: {
+        type: String,
+    },
     social: {
         youtube: {
             type: String,
