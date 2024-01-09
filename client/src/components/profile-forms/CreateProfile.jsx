@@ -12,10 +12,12 @@ const CreateProfile = () => {
         standardClass: "",
         prefferedDanceStyle: "",
         favouriteDance: "",
-        youtube: "",
-        facebook: "",
-        instagram: "",
-        twitter: "",
+        social: {
+            youtube: "",
+            facebook: "",
+            instagram: "",
+            twitter: "",
+        },
     });
 
     const {

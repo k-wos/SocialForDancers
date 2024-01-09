@@ -29,7 +29,7 @@ router.post("/", auth, async (req, res) => {
         birthday,
         latinClass,
         standardClass,
-        prefferdDanceStyle,
+        prefferedDanceStyle,
         favouriteDance,
         avatar,
         youtube,
@@ -43,8 +43,8 @@ router.post("/", auth, async (req, res) => {
     if (birthday) profileFields.birthday = birthday;
     if (latinClass) profileFields.latinClass = latinClass;
     if (standardClass) profileFields.standardClass = standardClass;
-    if (prefferdDanceStyle)
-        profileFields.prefferdDanceStyle = prefferdDanceStyle;
+    if (prefferedDanceStyle)
+        profileFields.prefferedDanceStyle = prefferedDanceStyle;
     if (favouriteDance) profileFields.favouriteDance = favouriteDance;
     if (avatar) profileFields.avatar = avatar;
 

@@ -14,10 +14,12 @@ const EditProfile = () => {
         standardClass: profile.standardClass || "",
         prefferedDanceStyle: profile.prefferedDanceStyle || "",
         favouriteDance: profile.favouriteDance || "",
-        youtube: profile.youtube || "",
-        facebook: profile.facebook || "",
-        instagram: profile.instagram || "",
-        twitter: profile.twitter || "",
+        social: {
+            youtube: profile.youtube || "",
+            facebook: profile.facebook || "",
+            instagram: profile.instagram || "",
+            twitter: profile.twitter || "",
+        },
     });
 
     useEffect(() => {
@@ -32,13 +34,16 @@ const EditProfile = () => {
                 standardClass: profile.standardClass || "",
                 prefferedDanceStyle: profile.prefferedDanceStyle || "",
                 favouriteDance: profile.favouriteDance || "",
-                youtube: profile.youtube || "",
-                facebook: profile.facebook || "",
-                instagram: profile.instagram || "",
-                twitter: profile.twitter || "",
+                social: {
+                    youtube: profile.youtube || "",
+                    facebook: profile.facebook || "",
+                    instagram: profile.instagram || "",
+                    twitter: profile.twitter || "",
+                },
             });
         }
     }, [profile]);
+
     const {
         birthday,
         latinClass,

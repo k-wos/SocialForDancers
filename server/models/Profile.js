@@ -14,7 +14,7 @@ const ProfileSchema = new mongoose.Schema({
     standardClass: {
         type: String,
     },
-    prefferdDanceStyle: {
+    prefferedDanceStyle: {
         type: String,
     },
     favouriteDance: {
