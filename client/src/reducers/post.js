@@ -11,22 +11,16 @@ const postSlice = createSlice({
     name: "post",
     initialState,
     reducers: {
-        addPost: (state, action) => {
-            state.push(action.payload);
+        getPosts: (state, action) => {
+            state.posts = action.payload;
+            state.loading = false;
         },
-        deletePost: (state, action) => {
-            return state.filter((post) => post.id !== action.payload);
-        },
-        updatePost: (state, action) => {
-            const { id, title, content } = action.payload;
-            const post = state.find((post) => post.id === id);
-            if (post) {
-                post.title = title;
-                post.content = content;
-            }
+        postError: (state, action) => {
+            state.error = action.payload;
+            state.loading = false;
         },
     },
 });
 
-export const { addPost, deletePost, updatePost } = postSlice.actions;
+export const { getPosts, postError } = postSlice.actions;
 export default postSlice.reducer;
