@@ -37,9 +37,24 @@ const postSlice = createSlice({
                     : post
             );
         },
+        addComment: (state, action) => {
+            const { postId, comment } = action.payload;
+            const postIndex = state.posts.findIndex(
+                (post) => post._id === postId
+            );
+            if (postIndex !== -1) {
+                state.posts[postIndex].comments.unshift(comment);
+            }
+        },
     },
 });
 
-export const { getPosts, postError, updateLikes, removeLikes, addPosts } =
-    postSlice.actions;
+export const {
+    getPosts,
+    postError,
+    updateLikes,
+    removeLikes,
+    addPosts,
+    addComment,
+} = postSlice.actions;
 export default postSlice.reducer;

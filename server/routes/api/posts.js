@@ -148,7 +148,7 @@ router.post(
 
             const newComment = {
                 content: req.body.content,
-                name: user.name,
+                name: user.firstName + " " + user.lastName,
                 avatar: user.avatar,
                 user: req.user.id,
             };
