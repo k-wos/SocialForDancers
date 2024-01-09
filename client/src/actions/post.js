@@ -5,6 +5,7 @@ import {
     postError,
     updateLikes,
     removeLikes,
+    addPosts,
 } from "../reducers/post";
 
 export const getAllPosts = () => async (dispatch) => {
