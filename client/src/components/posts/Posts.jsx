@@ -17,7 +17,7 @@ const Posts = () => {
         <>
             <h1>Posty</h1>
             <PostForm />
-            <div>
+            <div className="flex flex-col gap-2">
                 {Array.isArray(posts) &&
                     posts.map((post) => (
                         <PostItem key={post._id} post={post} auth={auth} />
