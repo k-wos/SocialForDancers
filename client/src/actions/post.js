@@ -8,6 +8,7 @@ import {
     addPosts,
     addComments,
     removeComments,
+    setUserPosts,
 } from "../reducers/post";
 
 export const getAllPosts = () => async (dispatch) => {
@@ -76,6 +77,14 @@ export const removeComment = (postId, commentId) => async (dispatch) => {
         await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
 
         dispatch(removeComments({ postId, commentId }));
+    } catch (err) {
+        dispatch(postError(err.response.data));
+    }
+};
+export const getUserPosts = (userId) => async (dispatch) => {
+    try {
+        const res = await axios.get(`/api/posts/user/${userId}`);
+        dispatch(setUserPosts(res.data));
     } catch (err) {
         dispatch(postError(err.response.data));
     }
