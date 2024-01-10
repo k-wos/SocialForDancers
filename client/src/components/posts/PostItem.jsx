@@ -13,6 +13,7 @@ const PostItem = ({
 }) => {
     const dispatch = useDispatch();
     const [commentText, setCommentText] = useState("");
+
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(addComment(_id, { content: commentText }));
@@ -20,34 +21,6 @@ const PostItem = ({
     };
     return (
         <>
-            {/* <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="py-5 border-b border-gray-300">
-                    <div className="flex justify-between">
-                        <h2 className="text-2xl font-bold">{name}</h2>
-                        {user === auth.user._id && (
-                            <button className="text-white bg-red-500  px-4 py-2 rounded-lg mt-2">
-                                <FaTimes />
-                            </button>
-                        )}
-                    </div>
-                    <p className="text-gray-600">{content}</p>
-                    <p>Data utworzenia {moment(date).format("MM/DD/YYYY")}</p>
-
-                    <Link
-                        to={`/posts/${_id}`}
-                        className="text-blue-500 hover:underline"
-                    >
-                        Zobacz post
-                    </Link>
-                </div>
-                <button
-                    onClick={(e) => dispatch(addLike(_id))}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2"
-                >
-                    <FaThumbsUp />
-                </button>
-                <span>{likes.length}</span>
-            </div> */}
             <div className="flex  justify-center mx-10 mt-10">
                 <div className="bg-white rounded-lg shadow-md p-6 w-full">
                     <div className="flex items-center justify-between mb-4">
@@ -92,6 +65,14 @@ const PostItem = ({
                         />
                         <button type="submit">Add Comment</button>
                     </form>
+                    <div>
+                        {comments.map((comment) => (
+                            <div key={comment._id}>
+                                <p>{comment.name}</p>
+                                <p>{comment.content}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </>
