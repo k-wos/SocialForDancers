@@ -1,7 +1,12 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { addLike, removeLike, addComment } from "../../actions/post";
+import {
+    addLike,
+    removeLike,
+    addComment,
+    removeComment,
+} from "../../actions/post";
 import { useDispatch } from "react-redux";
 import { FaThumbsUp } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
@@ -70,6 +75,18 @@ const PostItem = ({
                             <div key={comment._id}>
                                 <p>{comment.name}</p>
                                 <p>{comment.content}</p>
+                                {comment.user === auth.user._id && (
+                                    <button
+                                        onClick={() =>
+                                            dispatch(
+                                                removeComment(_id, comment._id)
+                                            )
+                                        }
+                                        className="text-white bg-red-500 px-4 py-2 rounded-lg mt-2"
+                                    >
+                                        <FaTimes />
+                                    </button>
+                                )}
                             </div>
                         ))}
                     </div>

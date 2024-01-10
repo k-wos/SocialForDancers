@@ -48,6 +48,7 @@ const postSlice = createSlice({
         },
         removeComments: (state, action) => {
             const { postId, commentId } = action.payload;
+            console.log("Removing comment with ID: ", commentId); // Dodajemy logowanie do konsoli
             const postIndex = state.posts.findIndex(
                 (post) => post._id === postId
             );
