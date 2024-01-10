@@ -61,6 +61,9 @@ const postSlice = createSlice({
                 }
             }
         },
+        setUserPosts: (state, action) => {
+            state.userPosts = action.payload;
+        },
     },
 });
 
@@ -72,5 +75,6 @@ export const {
     addPosts,
     addComments,
     removeComments,
+    setUserPosts,
 } = postSlice.actions;
 export default postSlice.reducer;
