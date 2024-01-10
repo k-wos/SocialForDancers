@@ -1,6 +1,7 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { addLike, removeLike } from "../../actions/post";
+import { addLike, removeLike, addComment } from "../../actions/post";
 import { useDispatch } from "react-redux";
 import { FaThumbsUp } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
@@ -11,7 +12,12 @@ const PostItem = ({
     post: { _id, content, name, user, likes, comments, date },
 }) => {
     const dispatch = useDispatch();
-
+    const [commentText, setCommentText] = useState("");
+    const onSubmit = (e) => {
+        e.preventDefault();
+        dispatch(addComment(_id, { content: commentText }));
+        setCommentText("");
+    };
     return (
         <>
             {/* <div className="bg-white rounded-lg shadow-md p-6">
@@ -77,6 +83,15 @@ const PostItem = ({
                         <FaThumbsUp />
                     </button>
                     <span>{likes.length}</span>
+                    <form onSubmit={onSubmit}>
+                        <input
+                            type="text"
+                            value={commentText}
+                            onChange={(e) => setCommentText(e.target.value)}
+                            required
+                        />
+                        <button type="submit">Add Comment</button>
+                    </form>
                 </div>
             </div>
         </>
