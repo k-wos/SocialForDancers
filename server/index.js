@@ -32,7 +32,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/ad", adRoutes);
+app.use("/api/ads", adRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

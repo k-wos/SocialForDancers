@@ -31,6 +31,12 @@ const Navbar = () => {
               ]
             : [
                   {
+                      id: 9,
+                      name: "Ogłoszenia",
+                      link: "/ads",
+                      current: false,
+                  },
+                  {
                       id: 5,
                       name: "Posty",
                       link: "/posts",

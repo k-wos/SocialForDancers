@@ -15,6 +15,7 @@ import EditProfile from "./components/profile-forms/EditProfile";
 import Dancers from "./pages/Dancers";
 import Profile from "./components/profile/Profile";
 import Posts from "./pages/Posts";
+import Ads from "./pages/Ads";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -33,6 +34,7 @@ const App = () => {
                     <Route path="/register" element={<Register />} />
                     <Route path="/dancers" element={<Dancers />} />
                     <Route path="/dancers/:id" element={<Profile />} />
+                    <Route path="/ads" element={<Ads />} />
                     <Route
                         path="/dashboard"
                         element={
