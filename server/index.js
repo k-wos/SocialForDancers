@@ -9,6 +9,7 @@ import userRoutes from "./routes/api/users.js";
 import postRoutes from "./routes/api/posts.js";
 import profileRoutes from "./routes/api/profile.js";
 import authRoutes from "./routes/api/auth.js";
+import adRoutes from "./routes/api/advertisment.js";
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/ad", adRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

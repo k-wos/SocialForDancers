@@ -1,12 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import Ad from "../../models/Advertisment.js";
+import { auth } from "../../middleware/auth.js";
 
 const router = express.Router();
 
 // @route   POST /ads
 // @desc    Create a new ad
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
     const newAd = new Ad({
         user: req.body.user,
         partnerType: req.body.partnerType,
@@ -66,3 +67,5 @@ router.delete("/:id", async (req, res) => {
         res.status(500).send(err.message);
     }
 });
+
+export default router;
