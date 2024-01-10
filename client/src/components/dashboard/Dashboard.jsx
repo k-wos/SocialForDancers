@@ -22,7 +22,7 @@ const Dashboard = () => {
         <>
             <ToastContainer />
             <Presentation user={user} profile={profile} />
-            <YourInfo profile={profile} />
+            <YourInfo user={user} profile={profile} />
         </>
     );
 };
