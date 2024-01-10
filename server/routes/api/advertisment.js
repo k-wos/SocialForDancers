@@ -42,3 +42,27 @@ router.get("/:id", async (req, res) => {
         res.status(500).send(err.message);
     }
 });
+
+// @route   PUT /ads/:id
+// @desc    Update ad by id
+router.put("/:id", async (req, res) => {
+    try {
+        const updatedAd = await Ad.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+        });
+        res.json(updatedAd);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
+// @route   DELETE /ads/:id
+// @desc    Delete ad by id
+router.delete("/:id", async (req, res) => {
+    try {
+        await Ad.findByIdAndDelete(req.params.id);
+        res.json({ message: "Ad deleted" });
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
