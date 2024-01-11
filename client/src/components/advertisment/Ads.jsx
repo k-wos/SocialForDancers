@@ -15,17 +15,7 @@ const Ads = () => {
         return <div>Loading...</div>;
     }
 
-    return (
-        <div>
-            {ads.map((ad) => (
-                <div key={ad._id}>
-                    <h2>{ad.title}</h2>
-                    <p>{ad.description}</p>
-                    {/* Add more fields as needed */}
-                </div>
-            ))}
-        </div>
-    );
+    return <div>ADS</div>;
 };
 
 export default Ads;
