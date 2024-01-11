@@ -43,7 +43,7 @@ const Presentation = ({ user, profile }) => {
                         </button>
                     </div>
                 </div>
-                <div className="mt-20 text-center border-b pb-12">
+                <div className="mt-20 text-center  pb-12">
                     <h1 className="text-4xl font-medium text-gray-700">
                         {user
                             ? `${user.firstName} ${user.lastName}`
