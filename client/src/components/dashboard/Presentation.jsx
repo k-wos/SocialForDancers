@@ -13,11 +13,19 @@ const Presentation = ({ user, profile }) => {
                         className="rounded-full aspect-square object-cover"
                     />
                     <h1 className="text-center py-3 font-bold text-2xl">
-                        {user.firstName} {user.lastName}
+                        {user
+                            ? `${user.firstName} ${user.lastName}`
+                            : "Loading..."}
                     </h1>
                     <div className="flex gap-2">
-                        <span>Obserwujący: {user.followers.length}</span>
-                        <span>Obserwowani: {user.following.length}</span>
+                        <span>
+                            Obserwujący:{" "}
+                            {user ? user.followers.length : "Loading..."}
+                        </span>
+                        <span>
+                            Obserwowani:{" "}
+                            {user ? user.following.length : "Loading..."}
+                        </span>
                     </div>
                 </div>
             </div>

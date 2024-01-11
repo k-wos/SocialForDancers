@@ -42,6 +42,7 @@ export const register =
             const res = await axios.post("/api/users", body, config);
             dispatch(registerSuccess({ token: res.data.token }));
             dispatch(userLoaded());
+
             toast.success("Rejestracja przebiegła pomyślnie");
         } catch (err) {
             console.error(err.response ? err.response.data : err.message);
@@ -67,7 +68,8 @@ export const login =
             const res = await axios.post("/api/auth", body, config);
             await dispatch(loginSuccess({ token: res.data.token }));
             setAuthToken(res.data.token);
-            dispatch(userLoaded());
+
+            dispatch(loadUser());
             toast.success("Logowanie przebiegło pomyślnie");
         } catch (err) {
             console.error(err.response ? err.response.data : err.message);
