@@ -1,8 +1,8 @@
-import moongose from "mongoose";
-const MessageSchema = new moongose.Schema(
+import mongoose from "mongoose";
+const MessageSchema = new mongoose.Schema(
     {
         sender: {
-            type: moongose.Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },
         message: {
@@ -10,11 +10,13 @@ const MessageSchema = new moongose.Schema(
             trim: true,
         },
         chatId: {
-            type: moongose.Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "Chat",
         },
     },
-    { timestamps: true }
+    {
+        timestamps: true,
+    }
 );
-const Message = moongose.model("Message", MessageSchema);
+const Message = mongoose.model("Message", MessageSchema);
 export default Message;

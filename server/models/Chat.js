@@ -6,14 +6,14 @@ const ChatSchema = new mongoose.Schema(
             type: String,
             default: "https://cdn-icons-png.flaticon.com/512/9790/9790561.png",
         },
-        name: {
+        chatName: {
             type: String,
         },
         isGroup: {
             type: Boolean,
             default: false,
         },
-        members: [
+        users: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "User",
@@ -23,12 +23,14 @@ const ChatSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Message",
         },
-        admin: {
+        groupAdmin: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },
     },
-    { timestamps: true }
+    {
+        timestamps: true,
+    }
 );
 
 const Chat = mongoose.model("Chat", ChatSchema);
