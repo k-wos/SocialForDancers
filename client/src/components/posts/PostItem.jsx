@@ -19,6 +19,10 @@ const PostItem = ({
     const dispatch = useDispatch();
     const [commentText, setCommentText] = useState("");
 
+    const handleCommentChange = (event) => {
+        setCommentText(event.target.value);
+    };
+
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(addComment(_id, { content: commentText }));
@@ -65,7 +69,7 @@ const PostItem = ({
                         <input
                             type="text"
                             value={commentText}
-                            onChange={(e) => setCommentText(e.target.value)}
+                            onChange={handleCommentChange}
                             required
                         />
                         <button type="submit">Add Comment</button>
