@@ -1,15 +1,32 @@
-import moongose from "mongoose";
+import mongoose from "mongoose";
 
-const AdSchema = new moongose.Schema({
+const AdSchema = new mongoose.Schema({
     user: {
-        type: moongose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "user",
     },
-    partnerType: {
-        type: String,
-        required: true,
-    },
     photo: {
+        type: String,
+    },
+    city: {
+        type: String,
+    },
+    gender: {
+        type: String,
+    },
+    age: {
+        type: String,
+    },
+    height: {
+        type: String,
+    },
+    latinClass: {
+        type: String,
+    },
+    standardClass: {
+        type: String,
+    },
+    experience: {
         type: String,
     },
     date: {
@@ -18,6 +35,6 @@ const AdSchema = new moongose.Schema({
     },
 });
 
-const Ad = moongose.model("ad", AdSchema);
+const Ad = mongoose.model("ad", AdSchema);
 
 export default Ad;
