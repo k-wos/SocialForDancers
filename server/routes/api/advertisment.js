@@ -75,25 +75,12 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// @route   PUT /ads/:id
-// @desc    Update ad by id
-router.put("/:id", async (req, res) => {
-    try {
-        const updatedAd = await Ad.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-        });
-        res.json(updatedAd);
-    } catch (err) {
-        res.status(500).send(err.message);
-    }
-});
-
 // @route   DELETE /ads/:id
 // @desc    Delete ad by id
-router.delete("/:id", async (req, res) => {
+router.delete("/", auth, async (req, res) => {
     try {
-        await Ad.findByIdAndDelete(req.params.id);
-        res.json({ message: "Ad deleted" });
+        await Ad.deleteOne({ user: req.user.id });
+        res.json({ msg: "Ad Removed" });
     } catch (err) {
         res.status(500).send(err.message);
     }
