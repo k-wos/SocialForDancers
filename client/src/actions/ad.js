@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { addAd } from "../reducers/ad";
+import { addAd, getAds } from "../reducers/ad";
 
 export const createAd = (adData) => async (dispatch) => {
     try {
@@ -9,5 +9,14 @@ export const createAd = (adData) => async (dispatch) => {
         toast.success("Dodano ogłoszenie");
     } catch (err) {
         toast.error("Błąd dodawania ogłoszenia");
+    }
+};
+
+export const fetchAds = () => async (dispatch) => {
+    try {
+        const res = await axios.get("/api/ads");
+        dispatch(getAds(res.data));
+    } catch (err) {
+        toast.error("Błąd pobierania ogłoszeń");
     }
 };

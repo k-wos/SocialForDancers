@@ -14,9 +14,12 @@ const adSlice = createSlice({
         addAd: (state, action) => {
             state.ads.push(action.payload);
         },
+        getAds: (state, action) => {
+            state.ads = action.payload;
+        },
     },
 });
 
-export const { addAd } = adSlice.actions;
+export const { addAd, getAds } = adSlice.actions;
 
 export default adSlice.reducer;
