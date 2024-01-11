@@ -40,19 +40,19 @@ const YourInfo = ({ user, profile }) => {
                         </h4>
                         <p className="flex items-center gap-3">
                             <FaFacebook className="text-blue-600" />{" "}
-                            {profile.social.facebook}
+                            {profile?.social?.facebook}
                         </p>
                         <p className="flex items-center gap-3">
                             <FaTwitter className="text-blue-400" />{" "}
-                            {profile.social.twitter}
+                            {profile?.social?.twitter}
                         </p>
                         <p className="flex items-center gap-3">
                             <FaInstagram className="text-pink-500" />{" "}
-                            {profile.social.instagram}
+                            {profile?.social?.instagram}
                         </p>
                         <p className="flex items-center gap-3">
                             <FaYoutube className="text-red-600" />{" "}
-                            {profile.social.youtube}
+                            {profile?.social?.youtube}
                         </p>
                     </div>
                 </div>

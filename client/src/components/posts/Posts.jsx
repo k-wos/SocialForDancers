@@ -14,8 +14,7 @@ const Posts = () => {
     }, [dispatch]);
 
     return (
-        <>
-            <h1>Posty</h1>
+        <div className="bg-gray-100 pt-10 flex flex-col justify-center items-center">
             <PostForm />
             <div className="flex flex-col gap-2">
                 {Array.isArray(posts) &&
@@ -23,7 +22,7 @@ const Posts = () => {
                         <PostItem key={post._id} post={post} auth={auth} />
                     ))}
             </div>
-        </>
+        </div>
     );
 };
 

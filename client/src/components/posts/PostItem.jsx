@@ -25,9 +25,9 @@ const PostItem = ({
         setCommentText("");
     };
     return (
-        <>
+        <div className="flex justify-center">
             <div className="flex  justify-center mx-10 mt-10">
-                <div className="bg-white rounded-lg shadow-md p-6 w-full">
+                <div className="bg-white rounded-lg shadow-md p-6 w-full ">
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center space-x-2">
                             <img
@@ -92,7 +92,7 @@ const PostItem = ({
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

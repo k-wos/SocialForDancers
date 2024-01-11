@@ -34,11 +34,10 @@ const EditProfile = () => {
                 standardClass: profile.standardClass || "",
                 prefferedDanceStyle: profile.prefferedDanceStyle || "",
                 favouriteDance: profile.favouriteDance || "",
-                youtube: profile.social.youtube || "",
-
-                facebook: profile.social.facebook || "",
-                instagram: profile.social.instagram || "",
-                twitter: profile.social.twitter || "",
+                youtube: profile?.social?.youtube || "",
+                facebook: profile?.social?.facebook || "",
+                instagram: profile?.social?.instagram || "",
+                twitter: profile?.social?.twitter || "",
             });
         }
     }, [profile]);
