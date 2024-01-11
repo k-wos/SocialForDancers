@@ -1,21 +1,8 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { loadAds } from "../../actions/ad";
+import React from "react";
+import CreateAd from "./CreateAd";
 
 const Ads = () => {
-    const dispatch = useDispatch();
-    const ads = useSelector((state) => state.ad.ads);
-    const loading = useSelector((state) => state.ad.loading);
-
-    useEffect(() => {
-        dispatch(loadAds());
-    }, [dispatch]);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    return <div>ADS</div>;
+    return <CreateAd />;
 };
 
 export default Ads;
