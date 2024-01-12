@@ -52,6 +52,14 @@ const authSlice = createSlice({
             state.loading = false;
             state.user = null;
         },
+        followUser: (state, action) => {
+            const { status, message } = action.payload;
+            if (status === 200) {
+                state.message = message;
+            } else {
+                state.message = message;
+            }
+        },
     },
 });
 
@@ -63,5 +71,6 @@ export const {
     loginSuccess,
     loginFail,
     logout,
+    followUser,
 } = authSlice.actions;
 export default authSlice.reducer;

@@ -7,6 +7,7 @@ import {
     loginSuccess,
     loginFail,
     logout,
+    followUser,
 } from "../reducers/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -85,3 +86,19 @@ export const loggedout = () => (dispatch) => {
     dispatch(clearProfile());
     toast.success("Wylogowano");
 };
+export const followUserAction =
+    (userIdToFollow) => async (dispatch, getState) => {
+        const {
+            auth: { user },
+        } = getState(); // Get the current user from the state
+
+        try {
+            const res = await axios.put(`/api/users/${userIdToFollow}/follow`, {
+                userId: user._id,
+            });
+            dispatch(followUser({ status: res.status, message: res.data }));
+        } catch (err) {
+            console.error(err.response ? err.response.data : err.message);
+            dispatch(followUser({ status: 500, message: "Server error" }));
+        }
+    };

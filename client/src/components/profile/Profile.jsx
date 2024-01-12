@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { getProfileById } from "../../actions/profile";
 import { useParams, Link } from "react-router-dom";
+import { followUserAction } from "../../actions/auth";
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -12,6 +13,9 @@ const Profile = () => {
     useEffect(() => {
         dispatch(getProfileById(id));
     }, [dispatch, id]);
+    const handleFollow = () => {
+        dispatch(followUserAction(id));
+    };
 
     return (
         <>
@@ -42,6 +46,7 @@ const Profile = () => {
                     <p className="text-gray-600">
                         Ulubiony taniec: {profile.favouriteDance}
                     </p>
+                    <button onClick={handleFollow}>Follow User</button>
                 </>
             )}
         </>
