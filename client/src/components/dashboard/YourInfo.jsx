@@ -96,10 +96,27 @@ const YourInfo = ({ user, profile }) => {
                             </dl>
                         </div>
                     </div>
-                    <div>
+                    <div className="w-full">
                         <h3 className="text-xl font-bold">Twoje posty</h3>
+
                         {userPosts.map((post) => (
-                            <p key={post._id}>{post.content}</p>
+                            <div
+                                className="border-b-2 border-gray-200 mb-4"
+                                key={post._id}
+                            >
+                                <p className="text-gray-600 text-sm mb-2">
+                                    {post.content}
+                                </p>
+                                <div className="flex items-center text-gray-500 text-sm">
+                                    <p className="mr-2">{post.date}</p>
+                                    <p className="mr-2">
+                                        {post.comments.length} komentarzy
+                                    </p>
+                                    <p className="mr-2">
+                                        {post.likes.length} polubień
+                                    </p>
+                                </div>
+                            </div>
                         ))}
                     </div>
                 </div>
