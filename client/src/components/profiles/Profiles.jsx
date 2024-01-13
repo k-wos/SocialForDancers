@@ -15,9 +15,11 @@ const Profiles = () => {
     return (
         <>
             <h1>Tancerze</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="flex flex-col md:flex-row md:flex-wrap py-5  items-center">
                 {profiles.map((profile) => (
-                    <ProfileItem key={profile._id} profile={profile} />
+                    <div className="w-1/2" key={profile._id}>
+                        <ProfileItem profile={profile} />
+                    </div>
                 ))}
             </div>
         </>

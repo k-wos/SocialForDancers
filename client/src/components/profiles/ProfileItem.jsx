@@ -10,30 +10,28 @@ const ProfileItem = ({
     },
 }) => {
     return (
-        <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex flex-col items-center pb-10">
-                <img
-                    src="https://picsum.photos/id/237/200/300"
-                    alt="avatar"
-                    className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                />
-                <h5 className="text-lg font-bold">
-                    {firstName} {lastName}{" "}
-                </h5>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                    LA: {latinClass}, ST: {standardClass}
-                </span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {favouriteDance}
-                </span>
-
-                <Link
-                    to={`/dancers/${_id}`}
-                    className="text-blue-500 hover:underline"
-                >
-                    Zobacz profil
-                </Link>
+        <div className="py-8 px-8 my-2 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+            <img
+                src="https://picsum.photos/id/237/200/300"
+                alt="avatar"
+                className="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0"
+            />
+            <div className="text-center space-y-2 sm:text-left">
+                <div className="space-y-0.5">
+                    <p className="text-lg text-black font-semibold">
+                        {firstName} {lastName}{" "}
+                    </p>
+                    <p className="text-slate-500 font-medium">
+                        LA: {latinClass}, ST: {standardClass}
+                    </p>
+                </div>
             </div>
+            <Link
+                to={`/dancers/${_id}`}
+                className="text-blue-500 hover:underline"
+            >
+                Zobacz profil
+            </Link>
         </div>
     );
 };

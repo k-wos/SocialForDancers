@@ -10,6 +10,7 @@ const Dashboard = () => {
     const dispatch = useDispatch();
     const { profile, loading } = useSelector((state) => state.profile);
     const user = useSelector((state) => state.auth.user);
+
     useEffect(() => {
         dispatch(getCurrentProfile());
     }, [dispatch]);
