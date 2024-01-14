@@ -3,6 +3,7 @@ import Profile from "../../models/Profile.js";
 import { auth } from "../../middleware/auth.js";
 import User from "../../models/User.js";
 import { check, validationResult } from "express-validator";
+import upload from "../../middleware/multer.js";
 
 const router = express.Router();
 
@@ -120,5 +121,29 @@ router.delete("/", auth, async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
+
+router.post(
+    "/coverPhoto",
+    auth,
+    upload.single("coverPhoto"),
+    async (req, res) => {
+        const coverPhoto = req.file.filename;
+
+        try {
+            const profile = await Profile.findOne({ user: req.user.id });
+            if (!profile) {
+                return res.status(400).json({ msg: "Profile not found" });
+            }
+
+            profile.coverPhoto = coverPhoto;
+            await profile.save();
+
+            res.json(profile);
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).send("Server Error");
+        }
+    }
+);
 
 export default router;

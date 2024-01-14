@@ -1,15 +1,40 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Presentation from "./Presentation";
 import YourInfo from "./YourInfo";
+import axios from "axios";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
     const { profile, loading } = useSelector((state) => state.profile);
     const user = useSelector((state) => state.auth.user);
+    const [file, setFile] = useState(null);
+
+    const submitForm = async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append("coverPhoto", file);
+
+        try {
+            const response = await axios.post(
+                "/api/profile/coverPhoto",
+                formData
+            );
+
+            const data = response.data;
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    const handleFileChange = (event) => {
+        setFile(event.target.files[0]);
+    };
 
     useEffect(() => {
         dispatch(getCurrentProfile());
@@ -33,7 +58,16 @@ const Dashboard = () => {
                     <span className="w-full h-full absolute opacity-50 bg-black"></span>
                 </div>
             </div>
-
+            <form onSubmit={submitForm}>
+                <label htmlFor="coverPhoto">Cover Photo:</label>
+                <input
+                    type="file"
+                    id="coverPhoto"
+                    name="coverPhoto"
+                    onChange={handleFileChange}
+                />
+                <button type="submit">Upload</button>
+            </form>
             <Presentation user={user} profile={profile} />
             <YourInfo user={user} profile={profile} />
         </>
