@@ -46,4 +46,21 @@ router.get("/:sender/:receiver", async (req, res) => {
     }
 });
 
+const { message, sender, receiver } = req.body;
+
+try {
+    const newMessage = new Chat({
+        message,
+        sender,
+        receiver,
+    });
+
+    const savedMessage = await newMessage.save();
+
+    res.json(savedMessage);
+} catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+}
+
 export default router;
