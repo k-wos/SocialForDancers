@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const Presentation = ({ user, profile }) => {
     return (
-        <div className="py-16">
-            <div className="p-8 bg-white shadow mt-24">
+        <div className="pb-16">
+            <div className="p-8 bg-white shadow">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="grid grid-cols-2 text-center order-last md:order-first mt-20 md:mt-0">
                         <div>

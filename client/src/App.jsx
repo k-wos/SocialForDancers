@@ -16,6 +16,7 @@ import Dancers from "./pages/Dancers";
 import Profile from "./components/profile/Profile";
 import Posts from "./pages/Posts";
 import Ads from "./pages/Ads";
+import NotFound from "./pages/NotFound";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -35,6 +36,7 @@ const App = () => {
                     <Route path="/dancers" element={<Dancers />} />
                     <Route path="/dancers/:id" element={<Profile />} />
                     <Route path="/ads" element={<Ads />} />
+                    <Route path="*" element={<NotFound />} />
                     <Route
                         path="/dashboard"
                         element={
