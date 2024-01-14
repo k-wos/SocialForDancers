@@ -63,4 +63,21 @@ try {
     res.status(500).send("Server Error");
 }
 
+// DELETE /api/chat/:id
+// Delete a chat message
+router.delete("/:id", async (req, res) => {
+    try {
+        const message = await Chat.findByIdAndDelete(req.params.id);
+
+        if (!message) {
+            return res.status(404).send("Message not found");
+        }
+
+        res.json({ msg: "Message deleted" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server Error");
+    }
+});
+
 export default router;
