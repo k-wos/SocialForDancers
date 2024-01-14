@@ -8,8 +8,8 @@ import {
     removeComment,
 } from "../../actions/post";
 import { useDispatch } from "react-redux";
-import { FaThumbsUp } from "react-icons/fa";
-import { FaTimes } from "react-icons/fa";
+import { FaThumbsUp, FaTimes, FaAngleRight } from "react-icons/fa";
+
 import moment from "moment";
 
 const PostItem = ({
@@ -29,30 +29,32 @@ const PostItem = ({
         setCommentText("");
     };
     return (
-        <div className="flex justify-center">
-            <div className="flex  justify-center mx-10 mt-10">
-                <div className="bg-white rounded-lg shadow-md p-6 w-full ">
-                    <div className="flex items-center justify-between mb-4">
+        <div className="  ">
+            <div className="  mx-10 mt-10">
+                <div className="bg-white rounded-lg shadow-md p-6 ">
+                    <div className="mb-4">
                         <div className="flex items-center space-x-2">
                             <img
                                 src="https://picsum.photos/id/237/200/300"
                                 alt="avatar"
                                 className="w-8 h-8 rounded-full"
                             />
-                            <div>
-                                <p className="text-gray-800 font-semibold">
-                                    {name}
-                                </p>
-                                <p className="text-gray-500 text-sm">
-                                    Utworzono:{" "}
-                                    {moment(date).format("MM/DD/YYYY")}
-                                </p>
+                            <div className="flex justify-between gap-10">
+                                <div>
+                                    <p className="text-gray-800 font-semibold">
+                                        {name}
+                                    </p>
+                                    <p className="text-gray-500 text-sm">
+                                        Utworzono:{" "}
+                                        {moment(date).format("MM/DD/YYYY")}
+                                    </p>
+                                </div>
+                                {user === auth.user._id && (
+                                    <button className="text-white bg-red-500  px-4 py-2 rounded-lg mt-2">
+                                        <FaTimes />
+                                    </button>
+                                )}
                             </div>
-                            {user === auth.user._id && (
-                                <button className="text-white bg-red-500  px-4 py-2 rounded-lg mt-2">
-                                    <FaTimes />
-                                </button>
-                            )}
                         </div>
                     </div>
                     <div className="mb-4">
@@ -65,20 +67,37 @@ const PostItem = ({
                         <FaThumbsUp />
                     </button>
                     <span>{likes.length}</span>
-                    <form onSubmit={onSubmit}>
+
+                    <form onSubmit={onSubmit} className="flex gap-4 py-4">
                         <input
                             type="text"
                             value={commentText}
                             onChange={handleCommentChange}
                             required
+                            placeholder="Dodaj komentarz..."
+                            className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500"
                         />
-                        <button type="submit">Add Comment</button>
+                        <button
+                            type="submit"
+                            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                        >
+                            <FaAngleRight />
+                        </button>
                     </form>
                     <div>
                         {comments.map((comment) => (
-                            <div key={comment._id}>
-                                <p>{comment.name}</p>
-                                <p>{comment.content}</p>
+                            <div
+                                key={comment._id}
+                                className="flex justify-between"
+                            >
+                                <div>
+                                    <p className="text-gray-700 font-semibold">
+                                        {comment.name}
+                                    </p>
+                                    <p className="text-gray-600">
+                                        {comment.content}
+                                    </p>
+                                </div>
                                 {comment.user === auth.user._id && (
                                     <button
                                         onClick={() =>
@@ -86,7 +105,7 @@ const PostItem = ({
                                                 removeComment(_id, comment._id)
                                             )
                                         }
-                                        className="text-white bg-red-500 px-4 py-2 rounded-lg mt-2"
+                                        className="text-white bg-red-500 px-4 py-2 rounded-lg mt-2 scale-50"
                                     >
                                         <FaTimes />
                                     </button>

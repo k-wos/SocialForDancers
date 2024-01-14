@@ -14,7 +14,7 @@ const PostForm = () => {
                 dispatch(addPost({ content }));
                 setContent("");
             }}
-            className="bg-white rounded-lg shadow-md py-7 px-8 mx-10 max-w-2xl w-full "
+            className="bg-white rounded-lg shadow-md py-7 px-8 mx-10 max-w-4xl w-full "
         >
             <textarea
                 placeholder="Co Ci tańczy po głowie?"
