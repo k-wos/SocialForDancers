@@ -68,6 +68,7 @@ const Dashboard = () => {
                 />
                 <button type="submit">Upload</button>
             </form>
+
             <Presentation user={user} profile={profile} />
             <YourInfo user={user} profile={profile} />
         </>
