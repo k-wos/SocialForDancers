@@ -18,7 +18,7 @@ import Posts from "./pages/Posts";
 import Ads from "./pages/Ads";
 import NotFound from "./pages/NotFound";
 import Chat from "./pages/Chat";
-import UsersAdmin from "./components/admin/users";
+import UsersAdmin from "./components/admin/users/users";
 import AdminPanel from "./pages/AdminPanel";
 
 if (localStorage.token) {
