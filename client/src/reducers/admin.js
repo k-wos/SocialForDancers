@@ -40,6 +40,22 @@ const adminSlice = createSlice({
             state.error = action.payload;
             state.loading = false;
         },
+        updateUserStart: (state) => {
+            state.loading = true;
+        },
+        updateUserSuccess: (state, action) => {
+            const updatedUserIndex = state.users.findIndex(
+                (user) => user.id === action.payload.id
+            );
+            if (updatedUserIndex !== -1) {
+                state.users[updatedUserIndex] = action.payload;
+            }
+            state.loading = false;
+        },
+        updateUserFailure: (state, action) => {
+            state.error = action.payload;
+            state.loading = false;
+        },
     },
 });
 
@@ -52,6 +68,9 @@ export const {
     createUserStart,
     createUserSuccess,
     createUserFailure,
+    updateUserStart,
+    updateUserSuccess,
+    updateUserFailure,
 } = adminSlice.actions;
 
 export default adminSlice.reducer;
