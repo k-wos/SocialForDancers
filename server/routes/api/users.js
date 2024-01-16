@@ -77,6 +77,22 @@ router.post(
     }
 );
 
+router.get("/allUsers/:id", async (req, res) => {
+    try {
+        const users = await User.find({ _id: { $ne: req.params.id } }).select([
+            "email",
+            "firstName",
+            "lastName",
+            "avatar",
+            "_id",
+        ]);
+        return res.json(users);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server error");
+    }
+});
+
 router.put("/:userId/follow", async (req, res) => {
     if (req.body.userId !== req.params.userId) {
         try {
