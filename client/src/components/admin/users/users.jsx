@@ -91,7 +91,7 @@ const UsersList = () => {
                         </thead>
                         <tbody>
                             {users.map((user) => (
-                                <tr key={user.id}>
+                                <tr key={user._id}>
                                     <th
                                         scope="row"
                                         className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -122,7 +122,14 @@ const UsersList = () => {
                                         {isOpen && (
                                             <div className="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                                                 <div className="px-4 py-3">
-                                                    <button className="bg-white flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
+                                                    <button
+                                                        className="bg-white flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200"
+                                                        onClick={() => {
+                                                            navigate(
+                                                                `/admin-users-update/${user._id}`
+                                                            );
+                                                        }}
+                                                    >
                                                         <svg
                                                             className="w-4 h-4 mr-2"
                                                             xmlns="http://www.w3.org/2000/svg"
