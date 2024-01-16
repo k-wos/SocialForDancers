@@ -20,6 +20,7 @@ import NotFound from "./pages/NotFound";
 import Chat from "./pages/Chat";
 import UsersAdmin from "./components/admin/users/users";
 import AdminPanel from "./pages/AdminPanel";
+import CreateUserAdmin from "./components/admin/users/createUser";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -43,6 +44,10 @@ const App = () => {
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/admin" element={<AdminPanel />} />
                     <Route path="/admin-users" element={<UsersAdmin />} />
+                    <Route
+                        path="/admin-users-create"
+                        element={<CreateUserAdmin />}
+                    />
                     <Route
                         path="/dashboard"
                         element={
