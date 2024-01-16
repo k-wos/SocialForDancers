@@ -3,6 +3,7 @@ import authReducer from "./reducers/auth";
 import profileReducer from "./reducers/profile";
 import postReducer from "./reducers/post";
 import adReducer from "./reducers/ad";
+import adminReducer from "./reducers/admin";
 
 export default configureStore({
     reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
         profile: profileReducer,
         post: postReducer,
         ad: adReducer,
+        admin: adminReducer,
     },
 });

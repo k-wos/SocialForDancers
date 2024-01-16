@@ -3,6 +3,7 @@ import { check, validationResult } from "express-validator";
 import gravatar from "gravatar";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { auth } from "../../middleware/auth.js";
 
 import User from "../../models/User.js";
 
@@ -31,7 +32,7 @@ router.post(
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { firstName, lastName, email, password } = req.body;
+        const { firstName, lastName, email, password, isAdmin } = req.body;
 
         try {
             let user = await User.findOne({ email });
@@ -47,6 +48,7 @@ router.post(
                 lastName,
                 email,
                 password,
+                isAdmin,
             });
 
             const salt = await bcrypt.genSalt(10);
@@ -146,6 +148,28 @@ router.put("/:userId/unfollow", async (req, res) => {
             res.status(500).send("Server error");
         }
     }
+});
+
+router.delete("/:userId", auth, async (req, res) => {
+    const userCheck = await User.findById(req.user.id);
+    if (!userCheck.isAdmin) {
+        console.log(userCheck.isAdmin);
+        return res.status(403).send("Access denied.");
+    }
+
+    // Jeśli użytkownik jest administratorem, pozwalamy mu na usunięcie użytkownika
+    const user = await User.findById(req.params.userId);
+    console.log(req.params.userId);
+    if (!user) {
+        return res
+            .status(404)
+            .send("The user with the given ID was not found.");
+    }
+
+    // Then remove the user
+    await user.deleteOne();
+
+    res.send(user);
 });
 
 export default router;
