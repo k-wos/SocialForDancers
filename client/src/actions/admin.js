@@ -9,6 +9,9 @@ import {
     updateUserStart,
     updateUserSuccess,
     updateUserFailure,
+    deleteUserFailure,
+    deleteUserStart,
+    deleteUserSuccess,
 } from "../reducers/admin";
 
 export const getUsers = () => async (dispatch) => {
@@ -61,5 +64,21 @@ export const updateUser = (userId, userData) => async (dispatch) => {
         dispatch(updateUserSuccess(res.data));
     } catch (err) {
         dispatch(updateUserFailure(err.response.data));
+    }
+};
+
+export const deleteUser = (userId) => async (dispatch) => {
+    dispatch(deleteUserStart());
+
+    try {
+        await axios.delete(`/api/admin/deleteUser/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+
+        dispatch(deleteUserSuccess(userId));
+    } catch (err) {
+        dispatch(deleteUserFailure(err.response.data));
     }
 };

@@ -56,6 +56,19 @@ const adminSlice = createSlice({
             state.error = action.payload;
             state.loading = false;
         },
+        deleteUserStart: (state) => {
+            state.loading = true;
+        },
+        deleteUserSuccess: (state, action) => {
+            state.users = state.users.filter(
+                (user) => user._id !== action.payload
+            );
+            state.loading = false;
+        },
+        deleteUserFailure: (state, action) => {
+            state.error = action.payload;
+            state.loading = false;
+        },
     },
 });
 
@@ -71,6 +84,9 @@ export const {
     updateUserStart,
     updateUserSuccess,
     updateUserFailure,
+    deleteUserStart,
+    deleteUserSuccess,
+    deleteUserFailure,
 } = adminSlice.actions;
 
 export default adminSlice.reducer;
