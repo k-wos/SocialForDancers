@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../actions/admin";
 import { useNavigate } from "react-router-dom";
+import { deleteUser } from "../../../actions/admin";
 
 const UsersList = () => {
     const dispatch = useDispatch();
@@ -12,6 +13,10 @@ const UsersList = () => {
     useEffect(() => {
         dispatch(getUsers());
     }, [dispatch]);
+
+    const handleDelete = (userId) => {
+        dispatch(deleteUser(userId));
+    };
 
     if (error === "Unauthorized") return <p>Brak dostępu</p>;
     if (loading) return <p>Loading...</p>;
@@ -153,6 +158,11 @@ const UsersList = () => {
                                                         data-modal-target="deleteModal"
                                                         data-modal-toggle="deleteModal"
                                                         className="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 text-red-500 dark:hover:text-red-400"
+                                                        onClick={() =>
+                                                            handleDelete(
+                                                                user._id
+                                                            )
+                                                        }
                                                     >
                                                         <svg
                                                             className="w-4 h-4 mr-2"
