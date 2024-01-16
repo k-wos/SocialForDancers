@@ -19,6 +19,7 @@ import Ads from "./pages/Ads";
 import NotFound from "./pages/NotFound";
 import Chat from "./pages/Chat";
 import UsersAdmin from "./components/admin/users";
+import AdminPanel from "./pages/AdminPanel";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -40,6 +41,7 @@ const App = () => {
                     <Route path="/ads" element={<Ads />} />
                     <Route path="*" element={<NotFound />} />
                     <Route path="/chat" element={<Chat />} />
+                    <Route path="/admin" element={<AdminPanel />} />
                     <Route path="/admin-users" element={<UsersAdmin />} />
                     <Route
                         path="/dashboard"
