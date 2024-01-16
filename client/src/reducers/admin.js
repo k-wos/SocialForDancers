@@ -29,6 +29,17 @@ const adminSlice = createSlice({
             state.error = "Unauthorized";
             state.loading = false;
         },
+        createUserStart: (state) => {
+            state.loading = true;
+        },
+        createUserSuccess: (state, action) => {
+            state.users = [...state.users, action.payload];
+            state.loading = false;
+        },
+        createUserFailure: (state, action) => {
+            state.error = action.payload;
+            state.loading = false;
+        },
     },
 });
 
@@ -38,6 +49,9 @@ export const {
     getUsersFailure,
     clearUsers,
     getUsersUnauthorized,
+    createUserStart,
+    createUserSuccess,
+    createUserFailure,
 } = adminSlice.actions;
 
 export default adminSlice.reducer;
