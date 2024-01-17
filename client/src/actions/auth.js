@@ -8,6 +8,8 @@ import {
     loginFail,
     logout,
     followUser,
+    unfollowUserSuccess,
+    unfollowUserFailure,
 } from "../reducers/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -102,3 +104,21 @@ export const followUserAction =
             dispatch(followUser({ status: 500, message: "Server error" }));
         }
     };
+
+export const unfollowUser = (userId) => async (dispatch, getState) => {
+    try {
+        const res = await axios.put(`/api/users/${userId}/unfollow`, {
+            userId: getState().auth.user._id,
+        });
+
+        if (res.status === 200) {
+            dispatch(unfollowUserSuccess(userId));
+            toast.success("Już nie obbserwujesz tego użytkownika");
+        } else {
+            throw new Error(res.data);
+        }
+    } catch (err) {
+        dispatch(unfollowUserFailure(err.message));
+        toast.error(err.message);
+    }
+};

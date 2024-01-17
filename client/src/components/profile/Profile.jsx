@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { getProfileById } from "../../actions/profile";
 import { useParams, Link } from "react-router-dom";
-import { followUserAction } from "../../actions/auth";
+import { followUserAction, unfollowUser } from "../../actions/auth";
 import { addComment } from "../../actions/post";
+import { ToastContainer } from "react-toastify";
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -16,6 +17,9 @@ const Profile = () => {
     }, [dispatch, id]);
     const handleFollow = () => {
         dispatch(followUserAction(id));
+    };
+    const handleUnfollow = () => {
+        dispatch(unfollowUser(id));
     };
 
     return (
@@ -50,6 +54,7 @@ const Profile = () => {
                         </div>
                     </div>
                     <div className="pb-16">
+                        <ToastContainer />
                         <div className="p-8 bg-white shadow">
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div className="grid grid-cols-2 text-center order-last md:order-first mt-20 md:mt-0">
@@ -77,6 +82,12 @@ const Profile = () => {
                                         onClick={handleFollow}
                                     >
                                         Obserwuj
+                                    </button>
+                                    <button
+                                        className="text-white py-2 px-4 uppercase rounded shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                                        onClick={handleUnfollow}
+                                    >
+                                        Przestań obserwować
                                     </button>
                                 </div>
                             </div>

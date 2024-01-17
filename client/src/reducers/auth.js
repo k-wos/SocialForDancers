@@ -60,6 +60,15 @@ const authSlice = createSlice({
                 state.message = message;
             }
         },
+        unfollowUserSuccess: (state, action) => {
+            const { userId } = action.payload;
+            state.user.following = state.user.following.filter(
+                (following) => following.user !== userId
+            );
+        },
+        unfollowUserFailure: (state, action) => {
+            state.error = action.payload;
+        },
     },
 });
 
@@ -72,5 +81,7 @@ export const {
     loginFail,
     logout,
     followUser,
+    unfollowUserFailure,
+    unfollowUserSuccess,
 } = authSlice.actions;
 export default authSlice.reducer;
