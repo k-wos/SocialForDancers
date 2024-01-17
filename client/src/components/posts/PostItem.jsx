@@ -6,6 +6,7 @@ import {
     removeLike,
     addComment,
     removeComment,
+    removePost,
 } from "../../actions/post";
 import { useDispatch } from "react-redux";
 import { FaThumbsUp, FaTimes, FaAngleRight } from "react-icons/fa";
@@ -28,6 +29,12 @@ const PostItem = ({
         dispatch(addComment(_id, { content: commentText }));
         setCommentText("");
     };
+    const handleDelete = () => {
+        if (window.confirm("Czy na pewno chcesz usunąć ten post?")) {
+            dispatch(removePost(_id));
+        }
+    };
+
     return (
         <div className="  ">
             <div className="  mx-10 mt-10">
@@ -50,7 +57,10 @@ const PostItem = ({
                                     </p>
                                 </div>
                                 {user === auth.user._id && (
-                                    <button className="text-white bg-red-500  px-4 py-2 rounded-lg mt-2">
+                                    <button
+                                        className="text-white bg-red-500  px-4 py-2 rounded-lg mt-2"
+                                        onClick={handleDelete}
+                                    >
                                         <FaTimes />
                                     </button>
                                 )}
