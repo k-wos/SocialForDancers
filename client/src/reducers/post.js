@@ -23,6 +23,12 @@ const postSlice = createSlice({
             state.posts.push(action.payload);
             state.loading = false;
         },
+        deletePost: (state, action) => {
+            state.posts = state.posts.filter(
+                (post) => post._id !== action.payload
+            );
+            state.loading = false;
+        },
         updateLikes: (state, action) => {
             state.posts = state.posts.map((post) =>
                 post._id === action.payload.id
@@ -76,5 +82,6 @@ export const {
     addComments,
     removeComments,
     setUserPosts,
+    deletePost,
 } = postSlice.actions;
 export default postSlice.reducer;

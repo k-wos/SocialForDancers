@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPost } from "../../actions/post";
+import { useNavigate } from "react-router-dom";
 
 const PostForm = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [content, setContent] = useState("");
     const [image, setImage] = useState(null);
@@ -17,7 +19,7 @@ const PostForm = () => {
             formData.append("upload", image);
         }
 
-        dispatch(addPost(formData));
+        dispatch(addPost(formData, navigate));
         setContent("");
         setImage(null);
     };
