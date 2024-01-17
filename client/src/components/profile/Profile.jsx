@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { getProfileById } from "../../actions/profile";
@@ -11,12 +11,25 @@ const Profile = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const profile = useSelector((state) => state.profile.profile);
+    const user = useSelector((state) => state.auth.user);
+    const [isFollowing, setIsFollowing] = useState(false);
+
+    useEffect(() => {
+        setIsFollowing(
+            user &&
+                profile &&
+                user.following.find(
+                    (following) => following.user === profile.user._id
+                )
+        );
+    }, [user, profile]);
 
     useEffect(() => {
         dispatch(getProfileById(id));
     }, [dispatch, id]);
     const handleFollow = () => {
         dispatch(followUserAction(id));
+        console.log(profile.user._id);
     };
     const handleUnfollow = () => {
         dispatch(unfollowUser(id));
@@ -77,18 +90,21 @@ const Profile = () => {
                                     </div>
                                 </div>
                                 <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-                                    <button
-                                        className="text-white py-2 px-4 uppercase rounded shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
-                                        onClick={handleFollow}
-                                    >
-                                        Obserwuj
-                                    </button>
-                                    <button
-                                        className="text-white py-2 px-4 uppercase rounded shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
-                                        onClick={handleUnfollow}
-                                    >
-                                        Przestań obserwować
-                                    </button>
+                                    {isFollowing ? (
+                                        <button
+                                            onClick={handleUnfollow}
+                                            className="text-white py-2 px-4 uppercase rounded shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                                        >
+                                            Przestań obserwować
+                                        </button>
+                                    ) : (
+                                        <button
+                                            onClick={handleFollow}
+                                            className="text-white py-2 px-4 uppercase rounded shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                                        >
+                                            Obserwuj
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                             <div className="mt-20 text-center  pb-12">
