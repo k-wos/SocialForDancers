@@ -4,12 +4,31 @@ import User from "../../models/User.js";
 import Profile from "../../models/Profile.js";
 import { auth } from "../../middleware/auth.js";
 import { check, validationResult } from "express-validator";
+import multer from "multer";
 
 const router = express.Router();
 
+const upload = multer({
+    limits: {
+        fileSize: 1000000, // limit to 1MB
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+            return cb(
+                new Error("Please upload an image file (jpg, jpeg, png)")
+            );
+        }
+        cb(undefined, true);
+    },
+});
+
 router.post(
     "/",
-    [auth, [check("content", "Content is Required").not().isEmpty()]],
+    [
+        auth,
+        upload.single("upload"),
+        [check("content", "Content is Required").not().isEmpty()],
+    ],
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -26,6 +45,13 @@ router.post(
                 user: req.user.id,
             });
 
+            if (req.file) {
+                const buffer = new Buffer.from(req.file.buffer).toString(
+                    "base64"
+                );
+                newPost.img = buffer;
+            }
+
             const post = await newPost.save();
 
             res.json(post);
@@ -35,17 +61,6 @@ router.post(
         }
     }
 );
-router.get("/user/:userId", auth, async (req, res) => {
-    try {
-        const posts = await Post.find({ user: req.params.userId }).sort({
-            date: -1,
-        });
-        res.json(posts);
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).send("Server Error");
-    }
-});
 
 router.get("/", auth, async (req, res) => {
     try {

@@ -22,17 +22,16 @@ export const getAllPosts = () => async (dispatch) => {
 };
 export const addPost = (formData, navigate) => async (dispatch) => {
     try {
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
         console.log(formData);
-        const res = await axios.post("/api/posts", formData, config);
+        const res = await axios.post("/api/posts", formData);
         dispatch(addPosts(res.data));
         navigate("/posts");
     } catch (err) {
-        dispatch(postError(err.response.data));
+        if (err.response) {
+            dispatch(postError(err.response.data));
+        } else {
+            console.error(err);
+        }
     }
 };
 

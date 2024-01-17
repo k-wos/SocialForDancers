@@ -14,7 +14,7 @@ import moment from "moment";
 
 const PostItem = ({
     auth,
-    post: { _id, content, name, user, likes, comments, date },
+    post: { _id, content, name, user, likes, comments, date, img },
 }) => {
     const dispatch = useDispatch();
     const [commentText, setCommentText] = useState("");
@@ -60,6 +60,12 @@ const PostItem = ({
                     <div className="mb-4">
                         <p className="text-gray-800">{content}</p>
                     </div>
+                    {img && (
+                        <img
+                            src={`data:image/jpeg;base64,${img}`}
+                            alt="Uploaded content"
+                        />
+                    )}
                     <button
                         onClick={(e) => dispatch(addLike(_id))}
                         className="bg-blue-500 text-white px-4 py-2 rounded-full mt-2 mr-2"
