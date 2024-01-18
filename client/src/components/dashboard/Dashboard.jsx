@@ -58,16 +58,6 @@ const Dashboard = () => {
                     <span className="w-full h-full absolute opacity-50 bg-black"></span>
                 </div>
             </div>
-            <form onSubmit={submitForm}>
-                <label htmlFor="coverPhoto">Cover Photo:</label>
-                <input
-                    type="file"
-                    id="coverPhoto"
-                    name="coverPhoto"
-                    onChange={handleFileChange}
-                />
-                <button type="submit">Upload</button>
-            </form>
 
             <Presentation user={user} profile={profile} />
             <YourInfo user={user} profile={profile} />

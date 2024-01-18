@@ -3,24 +3,27 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loggedout } from "../../actions/auth";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleNavbar = () => {
         setNavbarOpen(!navbarOpen);
     };
     const handleLogout = () => {
         dispatch(loggedout());
+        navigate("/login");
     };
 
     const navItems = [
         { id: 2, name: "Tancerze", link: "/dancers", current: false },
         ...(!isAuthenticated
             ? [
-                  { id: 1, name: "Główna", link: "/", current: true },
+                  { id: 1, name: "Główna", link: "/", current: false },
                   {
                       id: 3,
                       name: "Zarejestruj",
@@ -51,7 +54,7 @@ const Navbar = () => {
                   {
                       id: 7,
                       name: "Wyloguj",
-                      link: "#",
+
                       current: false,
                       onClick: handleLogout,
                   },

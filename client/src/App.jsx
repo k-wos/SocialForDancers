@@ -22,6 +22,7 @@ import UsersAdmin from "./components/admin/users/users";
 import AdminPanel from "./pages/AdminPanel";
 import CreateUserAdmin from "./components/admin/users/createUser";
 import EditUserAdmin from "./components/admin/users/EditUser";
+import CreateAdd from "./components/advertisment/CreateAd";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -40,7 +41,8 @@ const App = () => {
                     <Route path="/register" element={<Register />} />
                     <Route path="/dancers" element={<Dancers />} />
                     <Route path="/dancers/:id" element={<Profile />} />
-                    <Route path="/ads" element={<Ads />} />
+
+                    <Route path="/create-ad" element={<CreateAdd />} />
                     <Route path="*" element={<NotFound />} />
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/admin" element={<AdminPanel />} />
@@ -58,6 +60,14 @@ const App = () => {
                         element={
                             <PrivateRoute>
                                 <Dashboard />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="/ads"
+                        element={
+                            <PrivateRoute>
+                                <Ads />
                             </PrivateRoute>
                         }
                     />

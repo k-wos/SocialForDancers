@@ -14,6 +14,7 @@ const Home = () => {
         if (isAuthenticated) {
             navigate("/dashboard");
         }
+        document.title = "SocialForDancers - Strona główna";
     }, [isAuthenticated, navigate]);
     return (
         <>
