@@ -42,7 +42,7 @@ const EditUser = () => {
     return (
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
             <label className="block mb-4">
-                First Name:
+                Imię:
                 <input
                     type="text"
                     name="firstName"
@@ -52,7 +52,7 @@ const EditUser = () => {
                 />
             </label>
             <label className="block mb-4">
-                Last Name:
+                Nazwisko:
                 <input
                     type="text"
                     name="lastName"
@@ -72,7 +72,7 @@ const EditUser = () => {
                 />
             </label>
             <label className="block mb-4">
-                Password:
+                Hasło:
                 <input
                     type="password"
                     name="password"
@@ -98,7 +98,7 @@ const EditUser = () => {
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
-                Update User
+                Aktualizuj Dane
             </button>
         </form>
     );

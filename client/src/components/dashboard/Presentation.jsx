@@ -31,11 +31,12 @@ const Presentation = ({ user, profile }) => {
                             <DashboardActions />
                         ) : (
                             <>
-                                <p>
-                                    Nie masz utworzonego profilu, dodaj
-                                    informację:
-                                </p>
-                                <Link to="/create-profile">Utwórz profil</Link>
+                                <Link
+                                    to="/create-profile"
+                                    className="text-black py-2 px-4 uppercase rounded shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                                >
+                                    Utwórz profil
+                                </Link>
                             </>
                         )}
                         <button className="text-white py-2 px-4 uppercase rounded shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">

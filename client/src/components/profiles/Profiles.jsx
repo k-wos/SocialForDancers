@@ -14,13 +14,15 @@ const Profiles = () => {
 
     return (
         <>
-            <h1>Tancerze</h1>
             <div className="flex flex-col md:flex-row md:flex-wrap py-5  items-center">
-                {profiles.map((profile) => (
-                    <div className="w-1/2" key={profile._id}>
-                        <ProfileItem profile={profile} />
-                    </div>
-                ))}
+                {profiles.map(
+                    (profile) =>
+                        profile.user && (
+                            <div className="w-1/2" key={profile._id}>
+                                <ProfileItem profile={profile} />
+                            </div>
+                        )
+                )}
             </div>
         </>
     );

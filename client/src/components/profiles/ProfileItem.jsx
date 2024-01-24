@@ -11,11 +11,13 @@ const ProfileItem = ({
 }) => {
     return (
         <div className="py-8 px-8 my-2 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-            <img
-                src="https://picsum.photos/id/237/200/300"
-                alt="avatar"
-                className="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0"
-            />
+            <div>
+                <img
+                    src="https://picsum.photos/id/237/200/300"
+                    alt="avatar"
+                    className="block mx-auto h-24 w-24 object-cover rounded-full sm:mx-0 sm:flex-shrink-0"
+                />
+            </div>
             <div className="text-center space-y-2 sm:text-left">
                 <div className="space-y-0.5">
                     <p className="text-lg text-black font-semibold">

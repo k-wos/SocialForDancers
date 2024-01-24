@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAds } from "../../actions/ad";
+import { Link } from "react-router-dom";
 
 const Ads = () => {
     const dispatch = useDispatch();
@@ -11,107 +12,115 @@ const Ads = () => {
     }, [dispatch]);
 
     return (
-        <div className="w-full max-w-4xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200 mt-20">
-            <div className="px-5 py-4 border-b border-gray-100">
-                <h2 className="font-semibold text-gray-800">Ogłoszenia</h2>
-            </div>
-            <div className="p-3">
-                <div className="overflow-x-auto">
-                    <table className="table-auto w-full">
-                        <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
-                            <tr>
-                                <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">
-                                        Użytkownik
-                                    </div>
-                                </th>
-                                <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">
-                                        Miasto
-                                    </div>
-                                </th>
-                                <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">
-                                        Wiek
-                                    </div>
-                                </th>
-                                <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">
-                                        Wzrost
-                                    </div>
-                                </th>
-                                <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">
-                                        Klasa La
-                                    </div>
-                                </th>
-                                <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">
-                                        Klasa St
-                                    </div>
-                                </th>
-                                <th className="p-2 whitespace-nowrap">
-                                    <div className="font-semibold text-left">
-                                        Doświadczenie
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody className="text-sm divide-y divide-gray-100">
-                            {ads.map((ad) => (
-                                <tr key={ad.id} className=" h-40">
-                                    <td className="p-2 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                                                <img
-                                                    src="https://picsum.photos/id/237/200/300"
-                                                    alt="Ad"
-                                                    className="rounded-full w-full h-full object-cover"
-                                                />
-                                            </div>
-                                            <div className="font-medium text-gray-800">
-                                                {ad.user?.firstName}
-                                                {ad.user?.lastName}
-                                            </div>
+        <div className="flex flex-col items-center">
+            <Link
+                to="/create-ad"
+                className="text-blue-500 hover:text-blue-700 text-center"
+            >
+                Dodaj ogłoszenie
+            </Link>
+            <div className="w-full max-w-4xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200 mt-20">
+                <div className="px-5 py-4 border-b border-gray-100">
+                    <h2 className="font-semibold text-gray-800">Ogłoszenia</h2>
+                </div>
+                <div className="p-3">
+                    <div className="overflow-x-auto">
+                        <table className="table-auto w-full">
+                            <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                                <tr>
+                                    <th className="p-2 whitespace-nowrap">
+                                        <div className="font-semibold text-left">
+                                            Użytkownik
                                         </div>
-                                    </td>
-                                    <td className="p-2 whitespace-nowrap">
-                                        <div className="text-left">
-                                            {ad.city}
+                                    </th>
+                                    <th className="p-2 whitespace-nowrap">
+                                        <div className="font-semibold text-left">
+                                            Miasto
                                         </div>
-                                    </td>
-                                    <td className="p-2 whitespace-nowrap">
-                                        <div className="text-left">
-                                            {ad.age}
+                                    </th>
+                                    <th className="p-2 whitespace-nowrap">
+                                        <div className="font-semibold text-left">
+                                            Wiek
                                         </div>
-                                    </td>
-                                    <td className="p-2 whitespace-nowrap">
-                                        <div className="text-center">
-                                            {ad.height}
+                                    </th>
+                                    <th className="p-2 whitespace-nowrap">
+                                        <div className="font-semibold text-left">
+                                            Wzrost
                                         </div>
-                                    </td>
-                                    <td className="p-2 whitespace-nowrap">
-                                        <div className="text-center">
-                                            {ad.latinClass}
+                                    </th>
+                                    <th className="p-2 whitespace-nowrap">
+                                        <div className="font-semibold text-left">
+                                            Klasa La
                                         </div>
-                                    </td>
-                                    <td className="p-2 whitespace-nowrap">
-                                        <div className="text-center">
-                                            {ad.standardClass}
+                                    </th>
+                                    <th className="p-2 whitespace-nowrap">
+                                        <div className="font-semibold text-left">
+                                            Klasa St
                                         </div>
-                                    </td>
-                                    <td className="p-2 whitespace-nowrap">
-                                        <div className="text-center">
-                                            {ad.experience}
+                                    </th>
+                                    <th className="p-2 whitespace-nowrap">
+                                        <div className="font-semibold text-left">
+                                            Doświadczenie
                                         </div>
-                                    </td>
-                                    <td className="p-2 whitespace-nowrap">
-                                        <div className="text-center"></div>
-                                    </td>
+                                    </th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody className="text-sm divide-y divide-gray-100">
+                                {ads.map((ad) => (
+                                    <tr key={ad.id} className=" h-40">
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="flex items-center">
+                                                <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
+                                                    <img
+                                                        src="https://picsum.photos/id/237/200/300"
+                                                        alt="Ad"
+                                                        className="rounded-full w-full h-full object-cover"
+                                                    />
+                                                </div>
+                                                <div className="font-medium text-gray-800">
+                                                    {ad.user?.firstName}
+                                                    {ad.user?.lastName}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-left">
+                                                {ad.city}
+                                            </div>
+                                        </td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-left">
+                                                {ad.age}
+                                            </div>
+                                        </td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-center">
+                                                {ad.height}
+                                            </div>
+                                        </td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-center">
+                                                {ad.latinClass}
+                                            </div>
+                                        </td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-center">
+                                                {ad.standardClass}
+                                            </div>
+                                        </td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-center">
+                                                {ad.experience}
+                                            </div>
+                                        </td>
+                                        <td className="p-2 whitespace-nowrap">
+                                            <div className="text-center"></div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
