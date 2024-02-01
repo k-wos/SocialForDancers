@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import DashboardActions from "./DashboardActions";
 import { Link } from "react-router-dom";
+import Followings from "./Followings";
 
 const Presentation = ({ user, profile }) => {
+    const [showFollowings, setShowFollowings] = useState(false);
     return (
         <div className="pb-16">
             <div className="p-8 bg-white shadow">
@@ -12,10 +15,17 @@ const Presentation = ({ user, profile }) => {
                             <p>{user ? user.followers.length : "Loading..."}</p>
                             <p>Obserwujący</p>
                         </div>
-                        <div>
+                        <div onClick={() => setShowFollowings(true)}>
                             <p>{user ? user.following.length : "Loading..."}</p>
                             <p>Obserwowani: </p>
                         </div>
+                        {showFollowings && (
+                            <Followings
+                                user={user}
+                                showFollowings={showFollowings}
+                                setShowFollowings={setShowFollowings}
+                            />
+                        )}
                     </div>
                     <div className="relative">
                         <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center">
