@@ -1,13 +1,27 @@
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/layout/Navbar";
+import { useSelector } from "react-redux";
+
 const Chat = () => {
+    const auth = useSelector((state) => state.auth);
+    const [chat, setChat] = useState([]);
+
+    
     return (
         <>
             <Navbar />
-            <div className="h-screen w-full flex flex-column justify-center gap-1 items-center bg-slate-200">
-                <div
-                    className="w-5/6 h-5/6 bg-white grid"
-                    style={{ gridTemplateColumns: "25% 75%" }}
-                ></div>
+            <div className="relative grid grid-cols-4 gap-1">
+                <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1 rounded-md p-1 h-screen ">
+                        <h2>Czaty</h2>
+                        <div className="flex flex-col gap-1">
+                            Konwersacje
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-col gap-1">
+                    Right side
+                </div>
             </div>
         </>
     );
