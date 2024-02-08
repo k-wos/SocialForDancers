@@ -94,6 +94,24 @@ router.get("/allUsers/:id", async (req, res) => {
         res.status(500).send("Server error");
     }
 });
+router.get("/:userId", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId).select([
+            "email",
+            "firstName",
+            "lastName",
+            "avatar",
+            "_id",
+        ]);
+        if (!user) {
+            return res.status(404).json({ msg: "User not found" });
+        }
+        res.json(user);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server error");
+    }
+});
 
 router.put("/:userId/follow", async (req, res) => {
     if (req.body.userId !== req.params.userId) {

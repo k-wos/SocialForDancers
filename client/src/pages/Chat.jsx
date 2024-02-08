@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/layout/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import {getChat, findChat} from "../actions/chat";
+import Conversation from "../components/conversation/Conversation";
 
 
 const Chat = () => {
@@ -27,7 +28,7 @@ const Chat = () => {
                         <div className="flex flex-col gap-1">
                             {chat.map((chat) => (
                                 <div>
-                                    <Conversation data={chat} currentUser = {auth.user._id}/>
+                                    <Conversation data={chat} currentUserId = {auth.user._id}/>
                                 </div>
                             ))}
                         </div>
