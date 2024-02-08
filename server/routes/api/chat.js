@@ -28,11 +28,12 @@ router.get("/:userId", async (req, res) => {
 
 router.get("/find/:firstUserId/:secondUserId", async (req, res) => {
     try {
-        const chat = Chat.findOne({
+        const chat = await Chat.findOne({
             members: {
                 $all: [req.params.firstUserId, req.params.secondUserId],
             },
         });
+        res.status(200).json(chat);
     } catch (error) {
         res.status(500).json(error);
     }
