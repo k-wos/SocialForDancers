@@ -12,6 +12,7 @@ import authRoutes from "./routes/api/auth.js";
 import adRoutes from "./routes/api/advertisment.js";
 import adminRoutes from "./routes/api/admin/users.js";
 import chatRoutes from "./routes/api/chat.js";
+import messageRoutes from "./routes/api/message.js";
 import { auth } from "./middleware/auth.js";
 
 dotenv.config();
@@ -39,6 +40,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/ads", adRoutes);
 app.use("/api/admin", auth, adminRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
