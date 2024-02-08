@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/layout/Navbar";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {getChat, findChat} from "../actions/chat";
+
 
 const Chat = () => {
     const auth = useSelector((state) => state.auth);
-    const [chat, setChat] = useState([]);
-
+    const chat = useSelector((state) => state.chat.chat); 
     
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (auth.user) {
+            dispatch(getChat(auth.user._id));
+        }
+    }, [dispatch, auth.user]);
+
     return (
         <>
             <Navbar />
@@ -15,7 +25,11 @@ const Chat = () => {
                     <div className="flex flex-col gap-1 rounded-md p-1 h-screen ">
                         <h2>Czaty</h2>
                         <div className="flex flex-col gap-1">
-                            Konwersacje
+                            {chat.map((chat) => (
+                                <div>
+                                    <Conversation data={chat} currentUser = {auth.user._id}/>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
