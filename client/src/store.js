@@ -5,6 +5,7 @@ import postReducer from "./reducers/post";
 import adReducer from "./reducers/ad";
 import adminReducer from "./reducers/admin";
 import chatReducer from "./reducers/chat";
+import userReducer from "./reducers/user";
 
 export default configureStore({
     reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
         ad: adReducer,
         admin: adminReducer,
         chat: chatReducer,
+        user: userReducer,
     },
 });
