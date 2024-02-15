@@ -6,6 +6,7 @@ import { useParams, Link } from "react-router-dom";
 import { followUserAction, unfollowUser } from "../../actions/auth";
 import { addComment } from "../../actions/post";
 import { ToastContainer } from "react-toastify";
+import ProfileInfo from "./ProfileInfo";
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -29,10 +30,12 @@ const Profile = () => {
     }, [dispatch, id]);
     const handleFollow = () => {
         dispatch(followUserAction(id));
+        window.location.reload();
         console.log(profile.user._id);
     };
     const handleUnfollow = () => {
         dispatch(unfollowUser(id));
+        window.location.reload();
     };
 
     return (
@@ -72,7 +75,11 @@ const Profile = () => {
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div className="grid grid-cols-2 text-center order-last md:order-first mt-20 md:mt-0">
                                     <div>
-                                        <p>{profile ? 1 : "Loading..."}</p>
+                                        <p>
+                                            {profile
+                                                ? profile.user.followers.length
+                                                : "Loading..."}
+                                        </p>
                                         <p>Obserwujący</p>
                                     </div>
                                     <div>
@@ -114,6 +121,7 @@ const Profile = () => {
                                 </h1>
                             </div>
                         </div>
+                        <ProfileInfo profile={profile} />
                     </div>
                 </>
             )}

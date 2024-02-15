@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserPosts } from "../../actions/post";
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import moment from "moment";
 
 /* eslint-disable react/prop-types */
 const YourInfo = ({ user, profile }) => {
@@ -109,7 +110,11 @@ const YourInfo = ({ user, profile }) => {
                                         {post.content}
                                     </p>
                                     <div className="flex items-center text-gray-500 text-sm">
-                                        <p className="mr-2">{post.date}</p>
+                                        <p className="mr-2">
+                                            {moment(post.date).format(
+                                                "D.MM.YYYY HH:mm"
+                                            )}
+                                        </p>
                                         <p className="mr-2">
                                             {post.comments.length} komentarzy
                                         </p>

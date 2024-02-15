@@ -26,9 +26,9 @@ const Chat = () => {
                     <div className="flex flex-col gap-1 rounded-md p-1 h-screen ">
                         <h2>Czaty</h2>
                         <div className="flex flex-col gap-1">
-                            {chat.map((chat) => (
+                            {chat && chat.map((chat) => (
                                 <div>
-                                    <Conversation data={chat} currentUserId = {auth.user._id}/>
+                                    <Conversation data={chat} currentUserId={auth.user._id} />
                                 </div>
                             ))}
                         </div>
