@@ -40,6 +40,18 @@ const Navbar = () => {
                       current: false,
                   },
                   {
+                      id: 10,
+                      name: "Giełda",
+                      link: "/market",
+                      current: false,
+                  },
+                  {
+                      id: 11,
+                      name: "Wiadomości",
+                      link: "/chat",
+                      current: false,
+                  },
+                  {
                       id: 5,
                       name: "Posty",
                       link: "/posts",

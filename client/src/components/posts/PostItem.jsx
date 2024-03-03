@@ -37,7 +37,7 @@ const PostItem = ({
 
     return (
         <div className="  ">
-            <div className="  mx-10 mt-10">
+            <div className=" mt-10">
                 <div className="bg-white rounded-lg shadow-md p-6 ">
                     <div className="mb-4">
                         <div className="flex items-center space-x-2">

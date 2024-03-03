@@ -23,6 +23,7 @@ import AdminPanel from "./pages/AdminPanel";
 import CreateUserAdmin from "./components/admin/users/createUser";
 import EditUserAdmin from "./components/admin/users/EditUser";
 import CreateAdd from "./components/advertisment/CreateAd";
+import Market from "./pages/Market";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -41,6 +42,7 @@ const App = () => {
                     <Route path="/register" element={<Register />} />
                     <Route path="/dancers" element={<Dancers />} />
                     <Route path="/dancers/:id" element={<Profile />} />
+                    <Route path="/market" element={<Market />} />
 
                     <Route path="/create-ad" element={<CreateAdd />} />
                     <Route path="*" element={<NotFound />} />
