@@ -1,21 +1,34 @@
-import React, {useState, useEffect} from 'react'
-import { getUser } from '../../actions/user';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from "react";
 
-const Conversation = ({data, currentUserId}) => {
-    const dispatch = useDispatch();
-    const user = useSelector(state => state.user.user);
-
-
+function Conversation() {
+    const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const userId = data.members.find((member) => member !== currentUserId);
-        dispatch(getUser(userId));
-    },[dispatch]);
+        // Tutaj możesz pobrać wiadomości z serwera
+        // Na razie dodajemy przykładowe wiadomości
+        setMessages([
+            { id: 1, text: "Wiadomość 1", read: false },
+            { id: 2, text: "Wiadomość 2", read: false },
+            { id: 3, text: "Wiadomość 3", read: true },
+        ]);
+    }, []);
+
+    const deleteMessage = (id) => {
+        setMessages(messages.filter((message) => message.id !== id));
+    };
+
     return (
-        <div>Conversation</div>
-        
-    )
+        <div>
+            {messages.map((message) => (
+                <div key={message.id}>
+                    <p>{message.text}</p>
+                    <button onClick={() => deleteMessage(message.id)}>
+                        Usuń
+                    </button>
+                </div>
+            ))}
+        </div>
+    );
 }
 
-export default Conversation
+export default Conversation;

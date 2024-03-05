@@ -27,6 +27,7 @@ export const addPost = (formData, navigate) => async (dispatch) => {
         console.log(formData);
         const res = await axios.post("/api/posts", formData);
         dispatch(addPosts(res.data));
+        dispatch(getAllPosts());
         navigate("/posts");
     } catch (err) {
         if (err.response) {

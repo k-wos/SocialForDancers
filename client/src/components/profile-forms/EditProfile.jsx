@@ -67,101 +67,126 @@ const EditProfile = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <label className="block mb-2">Data urodzenia</label>
-            <input
-                type="date"
-                name="birthday"
-                value={birthday}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
-            />
+        <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+            <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl   lg:max-w-xl">
+                <h1 className="text-3xl font-semibold text-center text-indigo-700  uppercase">
+                    Edytuj profil
+                </h1>
+                <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+                    <label className="block text-sm font-semibold text-gray-800">
+                        Data urodzenia
+                    </label>
+                    <input
+                        type="date"
+                        name="birthday"
+                        value={birthday}
+                        onChange={handleChange}
+                        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
 
-            <label className="block mb-2">Klasa LA</label>
-            <input
-                type="text"
-                name="latinClass"
-                value={latinClass}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
-            />
+                    <label className="block text-sm font-semibold text-gray-800">
+                        Klasa LA
+                    </label>
+                    <input
+                        type="text"
+                        name="latinClass"
+                        value={latinClass}
+                        onChange={handleChange}
+                        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
 
-            <label className="block mb-2">Klasa ST</label>
-            <input
-                type="text"
-                name="standardClass"
-                value={standardClass}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
-            />
+                    <label className="block text-sm font-semibold text-gray-800">
+                        Klasa ST
+                    </label>
+                    <input
+                        type="text"
+                        name="standardClass"
+                        value={standardClass}
+                        onChange={handleChange}
+                        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
 
-            <label className="block mb-2">Preferowany styl taneczny</label>
-            <input
-                type="text"
-                name="prefferedDanceStyle"
-                value={prefferedDanceStyle}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
-            />
+                    <label className="block text-sm font-semibold text-gray-800">
+                        Preferowany styl taneczny
+                    </label>
+                    <input
+                        type="text"
+                        name="prefferedDanceStyle"
+                        value={prefferedDanceStyle}
+                        onChange={handleChange}
+                        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
 
-            <label className="block mb-2">Ulubiony taniec</label>
-            <input
-                type="text"
-                name="favouriteDance"
-                value={favouriteDance}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
-            />
+                    <label className="block text-sm font-semibold text-gray-800">
+                        Ulubiony taniec
+                    </label>
+                    <input
+                        type="text"
+                        name="favouriteDance"
+                        value={favouriteDance}
+                        onChange={handleChange}
+                        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
 
-            <label className="block mb-2">YouTube</label>
-            <input
-                type="text"
-                name="youtube"
-                value={youtube}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
-            />
+                    <label className="block text-sm font-semibold text-gray-800">
+                        YouTube
+                    </label>
+                    <input
+                        type="text"
+                        name="youtube"
+                        value={youtube}
+                        onChange={handleChange}
+                        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
 
-            <label className="block mb-2">Facebook</label>
-            <input
-                type="text"
-                name="facebook"
-                value={facebook}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
-            />
+                    <label className="block text-sm font-semibold text-gray-800">
+                        Facebook
+                    </label>
+                    <input
+                        type="text"
+                        name="facebook"
+                        value={facebook}
+                        onChange={handleChange}
+                        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
 
-            <label className="block mb-2">Instagram</label>
-            <input
-                type="text"
-                name="instagram"
-                value={instagram}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
-            />
+                    <label className="block text-sm font-semibold text-gray-800">
+                        Instagram
+                    </label>
+                    <input
+                        type="text"
+                        name="instagram"
+                        value={instagram}
+                        onChange={handleChange}
+                        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
 
-            <label className="block mb-2">Twitter</label>
-            <input
-                type="text"
-                name="twitter"
-                value={twitter}
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4"
-            />
+                    <label className="block text-sm font-semibold text-gray-800">
+                        Twitter
+                    </label>
+                    <input
+                        type="text"
+                        name="twitter"
+                        value={twitter}
+                        onChange={handleChange}
+                        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
 
-            <button
-                type="submit"
-                className="bg-blue-500 text-white py-2 px-4 rounded-md"
-            >
-                Zapisz
-            </button>
-            <button
-                onClick={() => navigate("/dashboard")}
-                className="bg-red-500 text-white py-2 px-4 rounded-md"
-            >
-                Wróć
-            </button>
-        </form>
+                    <button
+                        type="submit"
+                        className="bg-blue-500 text-white py-2 px-4 rounded-md"
+                    >
+                        Zapisz
+                    </button>
+                    <button
+                        onClick={() => navigate("/dashboard")}
+                        className="bg-red-500 text-white py-2 px-4 rounded-md"
+                    >
+                        Wróć
+                    </button>
+                </form>
+            </div>
+        </div>
     );
 };
 

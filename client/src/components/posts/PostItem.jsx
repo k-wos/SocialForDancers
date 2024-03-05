@@ -58,7 +58,7 @@ const PostItem = ({
                                 </div>
                                 {user === auth.user._id && (
                                     <button
-                                        className="text-white bg-red-500  px-4 py-2 rounded-lg mt-2"
+                                        className="text-red-500 bg-white  px-4 py-2 rounded-lg mt-2  "
                                         onClick={handleDelete}
                                     >
                                         <FaTimes />
@@ -95,7 +95,7 @@ const PostItem = ({
                         />
                         <button
                             type="submit"
-                            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 "
                         >
                             <FaAngleRight />
                         </button>
