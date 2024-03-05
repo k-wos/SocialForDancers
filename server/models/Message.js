@@ -2,15 +2,10 @@ import mongoose from "mongoose";
 
 const MessageSchema = new mongoose.Schema(
     {
-        chatId: {
-            type: String,
-        },
-        sender: {
-            type: String,
-        },
-        text: {
-            type: String,
-        },
+        sender: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        recipient: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        text: String,
+        file: String,
     },
     { timestamps: true }
 );

@@ -17,7 +17,7 @@ const Presentation = ({ user, profile }) => {
                         </div>
                         <div onClick={() => setShowFollowings(true)}>
                             <p>{user ? user.following.length : "Loading..."}</p>
-                            <p>Obserwowani: </p>
+                            <p>Obserwowani </p>
                         </div>
                         {showFollowings && (
                             <Followings
