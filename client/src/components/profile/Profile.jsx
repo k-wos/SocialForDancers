@@ -7,6 +7,7 @@ import { followUserAction, unfollowUser } from "../../actions/auth";
 import { addComment } from "../../actions/post";
 import { ToastContainer } from "react-toastify";
 import ProfileInfo from "./ProfileInfo";
+import NavBar from "../layout/NavBar";
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -43,21 +44,13 @@ const Profile = () => {
             {profile === null ? (
                 <>
                     <h1>Brak profilu</h1>
-                    <Link
-                        to="/dancers"
-                        className="text-blue-500 hover:underline"
-                    >
-                        Wróć do listy tancerzy
-                    </Link>
+
+                    <NavBar />
                 </>
             ) : (
                 <>
-                    <Link
-                        to="/dancers"
-                        className="text-blue-500 hover:underline"
-                    >
-                        Wróć do listy tancerzy
-                    </Link>
+                    <NavBar />
+
                     <div className="relative block h-96">
                         <div
                             className="absolute top-0 w-full h-full bg-center bg-cover"

@@ -74,6 +74,7 @@ const PostItem = ({
                         <img
                             src={`data:image/jpeg;base64,${img}`}
                             alt="Uploaded content"
+                            className="text-center w-full  object-cover rounded-lg"
                         />
                     )}
                     <button

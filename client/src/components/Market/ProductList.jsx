@@ -1,4 +1,7 @@
 import React from "react";
+import shoes from "../../assets/shoes.jpg";
+import manShoes from "../../assets/dance-shoes.jpg";
+import balette from "../../assets/balette.jpg";
 
 const ProductList = () => {
     const products = [
@@ -7,36 +10,33 @@ const ProductList = () => {
             name: "Buty La",
             href: "#",
             price: "200 zł",
-            imageSrc:
-                "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+            imageSrc: shoes,
             imageAlt:
                 "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
         },
         {
             id: 2,
-            name: "Nomad Tumbler",
+            name: "Męskie buty taneczne",
             href: "#",
-            price: "$35",
-            imageSrc:
-                "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
+            price: "250 zł",
+            imageSrc: manShoes,
             imageAlt:
                 "Olive drab green insulated bottle with flared screw lid and flat top.",
         },
         {
             id: 3,
-            name: "Focus Paper Refill",
+            name: "Sukienka baletowa",
             href: "#",
-            price: "$89",
-            imageSrc:
-                "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
+            price: "150 zł",
+            imageSrc: balette,
             imageAlt:
                 "Person using a pen to cross a task off a productivity paper card.",
         },
         {
             id: 4,
-            name: "Machined Mechanical Pencil",
+            name: "Przykładowy produkt",
             href: "#",
-            price: "$35",
+            price: "20000 zł",
             imageSrc:
                 "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
             imageAlt:
@@ -60,7 +60,7 @@ const ProductList = () => {
                                 <img
                                     src={product.imageSrc}
                                     alt={product.imageAlt}
-                                    className="h-full w-full object-cover object-center group-hover:opacity-75"
+                                    className="h-full w-full object-cover object-center group-hover:opacity-75 "
                                 />
                             </div>
                             <h3 className="mt-4 text-sm text-gray-700">

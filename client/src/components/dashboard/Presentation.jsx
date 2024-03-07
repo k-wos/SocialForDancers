@@ -29,11 +29,9 @@ const Presentation = ({ user, profile }) => {
                     </div>
                     <div className="relative">
                         <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center">
-                            <img
-                                src="https://picsum.photos/id/237/200/300"
-                                alt="avatar"
-                                className="rounded-full aspect-square object-cover"
-                            />
+                            <p className="text-6xl text-gray-400 font-bold">
+                                +
+                            </p>
                         </div>
                     </div>
                     <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
@@ -49,7 +47,7 @@ const Presentation = ({ user, profile }) => {
                                 </Link>
                             </>
                         )}
-                        <button className="text-white py-2 px-4 uppercase rounded shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                        <button className="text-white bg-red-500 py-2 px-4 uppercase rounded shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                             Usuń konto
                         </button>
                     </div>

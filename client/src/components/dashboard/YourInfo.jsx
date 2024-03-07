@@ -75,7 +75,7 @@ const YourInfo = ({ user, profile }) => {
                                         <FaTwitter className="text-blue-400" />{" "}
                                     </dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        {profile?.social?.facebook}
+                                        {profile?.social?.twitter}
                                     </dd>
                                 </div>
                                 <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -83,7 +83,7 @@ const YourInfo = ({ user, profile }) => {
                                         <FaInstagram className="text-pink-500" />{" "}
                                     </dt>
                                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                        {profile?.social?.twitter}
+                                        {profile?.social?.instagram}
                                     </dd>
                                 </div>
                                 <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

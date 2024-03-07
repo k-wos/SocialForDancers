@@ -36,17 +36,19 @@ const PostForm = () => {
                 onChange={(e) => setContent(e.target.value)}
                 className="w-full h-32 p-2 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></textarea>
-            <input
-                type="file"
-                onChange={(e) => setImage(e.target.files[0])}
-                className="my-2"
-            />
-            <button
-                type="submit"
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-            >
-                Opublikuj
-            </button>
+            <div className="flex justify-between">
+                <input
+                    type="file"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    className="my-2 "
+                />
+                <button
+                    type="submit"
+                    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                >
+                    Opublikuj
+                </button>
+            </div>
         </form>
     );
 };

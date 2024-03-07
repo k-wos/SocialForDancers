@@ -10,30 +10,34 @@ const ProfileItem = ({
     },
 }) => {
     return (
-        <div className="py-8 px-8 my-2 max-w-lg mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-            <div>
+        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="flex flex-col items-center pb-10 py-10 px-10">
                 <img
+                    class="w-24 h-24 mb-3 rounded-full shadow-lg"
                     src="https://picsum.photos/id/237/200/300"
                     alt="avatar"
-                    className="block mx-auto h-24 w-24 object-cover rounded-full sm:mx-0 sm:flex-shrink-0"
                 />
-            </div>
-            <div className="text-center space-y-2 sm:text-left">
-                <div className="space-y-0.5">
-                    <p className="text-lg text-black font-semibold">
-                        {firstName} {lastName}{" "}
-                    </p>
-                    <p className="text-slate-500 font-medium">
-                        LA: {latinClass}, ST: {standardClass}
-                    </p>
+                <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                    {firstName} {lastName}{" "}
+                </h5>
+                <span class="text-sm text-gray-500 dark:text-gray-400">
+                    LA: {latinClass}, ST: {standardClass}
+                </span>
+                <div class="flex mt-4 md:mt-6">
+                    <a
+                        href={`/dancers/${_id}`}
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                        Zobacz profil
+                    </a>
+                    <a
+                        href="#"
+                        class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    >
+                        Wiadomość
+                    </a>
                 </div>
             </div>
-            <Link
-                to={`/dancers/${_id}`}
-                className="text-blue-500 hover:underline"
-            >
-                Zobacz profil
-            </Link>
         </div>
     );
 };

@@ -14,11 +14,11 @@ const Profiles = () => {
 
     return (
         <>
-            <div className="flex flex-col md:flex-row md:flex-wrap py-5  items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center items-center mt-10">
                 {profiles.map(
                     (profile) =>
                         profile.user && (
-                            <div className="w-1/2" key={profile._id}>
+                            <div key={profile._id}>
                                 <ProfileItem profile={profile} />
                             </div>
                         )

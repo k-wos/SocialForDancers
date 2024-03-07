@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 
 const MessageSchema = new mongoose.Schema(
     {
-        sender: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-        recipient: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-        text: String,
-        file: String,
+        from: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        to: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        content: String,
+        date: { type: Date, default: Date.now },
     },
     { timestamps: true }
 );
